@@ -16,7 +16,7 @@ We currently support the latest version of **𝐃𝐀𝐕𝐄-𝐌𝐃** only.
 If you discover a security issue or vulnerability in this project:
 
 - 📩 **Please report it directly to the project owner:**
-  - **Name:** Dave
+  - **Name:** Gifted Dave 
 
   - **GitHub Repo:** [github.com/giftedsession/dark-dave](https://github.com/giftedsession/DAVE-MD)
 
