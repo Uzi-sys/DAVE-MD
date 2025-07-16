@@ -1,0 +1,13 @@
+name: dave-md-bot
+
+services:
+  - name: whatsapp-bot
+    dockerfile: Dockerfile
+    ports:
+      - internal: 3000
+    routes:
+      - path: /
+    env:
+      - key: NODE_ENV
+        value: production
+    instance_type: nano
