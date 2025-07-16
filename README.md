@@ -106,6 +106,23 @@ For further customization and setup guidance, click the button below:
 </a>
 </div>
 
+Click on any platform below to deploy the bot instantly
+
+[![Deploy on Railway](https://railway.app/button.svg)](https://railway.app/new/template?template=https://github.com/giftedsession/DAVE-MD)
+
+[![Deploy on Heroku](https://img.shields.io/badge/Deploy%20to-Heroku-7952B3?style=for-the-badge&logo=heroku)](https://dashboard.heroku.com/new?template=https://github.com/giftedsession/DAVE-MD)
+
+[![Deploy on Render](https://img.shields.io/badge/Deploy%20to-Render-35495E?style=for-the-badge&logo=render)](https://dashboard.render.com/)
+
+[![Deploy on Koyeb](https://img.shields.io/badge/Deploy%20to-Koyeb-161616?style=for-the-badge&logo=koyeb)](https://app.koyeb.com/)
+
+---
+
+### 📦 Source
+This setup powers the **𝐃𝐀𝐕𝐄-𝐌𝐃** WhatsApp bot.  
+GitHub: [https://github.com/giftedsession/DAVE-MD](https://github.com/giftedsession/DAVE-MD)
+
+
 ### Join Us
 
 <div align="center">
@@ -119,25 +136,6 @@ For further customization and setup guidance, click the button below:
 
 ---
 
-## ⚙️ Features
-
-- **Tag all group members** with the `.tagall` command
-- **Admin restricted usage** (Only group admins can use certain commands)
-- **Games** like Tic-Tac-Toe for interactive group engagement
-- **Text-to-Speech** with `.tts`
-- **Sticker creation** with `.sticker`
-- **Anti-link detection** for group safety
-- **Warn and manage group members** with admin control
-
----
-
-## 📖 About
-
-Jinx WhatsApp Bot assists group admins by providing them with tools to efficiently manage large WhatsApp groups. The bot uses the Baileys library to interact with the WhatsApp Web API and supports multi-device features.
-
-It is lightweight and can be easily customized to add more commands as per your requirements. The bot runs in a Node.js environment and provides QR code-based authentication to link your WhatsApp account.
-
----
 
 ## 🛠️ Setup & Installation
 
