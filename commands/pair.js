@@ -11,7 +11,7 @@ async function pairCommand(sock, chatId, message, q) {
                     isForwarded: true,
                     forwardedNewsletterMessageInfo: {
                         newsletterJid: '120363302677217436@newsletter',
-                        newsletterName: 'JINX-XMD',
+                        newsletterName: 'DAVE-MD',
                         serverMessageId: -1
                     }
                 }
@@ -30,7 +30,7 @@ async function pairCommand(sock, chatId, message, q) {
                     isForwarded: true,
                     forwardedNewsletterMessageInfo: {
                         newsletterJid: '120363302677217436@newsletter',
-                        newsletterName: 'JINX-XMD',
+                        newsletterName: 'DAVE-MD',
                         serverMessageId: -1
                     }
                 }
@@ -49,7 +49,7 @@ async function pairCommand(sock, chatId, message, q) {
                         isForwarded: true,
                         forwardedNewsletterMessageInfo: {
                             newsletterJid: '120363302677217436@newsletter',
-                            newsletterName: 'JINX-XMD',
+                            newsletterName: 'DAVE-MD',
                             serverMessageId: -1
                         }
                     }
@@ -86,7 +86,7 @@ async function pairCommand(sock, chatId, message, q) {
                             isForwarded: true,
                             forwardedNewsletterMessageInfo: {
                                 newsletterJid: '120363302677217436@newsletter',
-                                newsletterName: 'JINX-XMD',
+                                newsletterName: 'DAVE-MD',
                                 serverMessageId: -1
                             }
                         }
@@ -107,7 +107,7 @@ async function pairCommand(sock, chatId, message, q) {
                         isForwarded: true,
                         forwardedNewsletterMessageInfo: {
                             newsletterJid: '120363302677217436@newsletter',
-                            newsletterName: 'JINX-XMD',
+                            newsletterName: 'DAVE-MD',
                             serverMessageId: -1
                         }
                     }

@@ -8,7 +8,7 @@ const channelInfo = {
         isForwarded: true,
         forwardedNewsletterMessageInfo: {
             newsletterJid: '+12036330267721@newsletter',
-            newsletterName: 'JINX-XMD',
+            newsletterName: 'DAVE-MD',
             serverMessageId: -1
         }
     }

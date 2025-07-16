@@ -80,10 +80,10 @@ const store = {
     }
 }
 
-let phoneNumber = "254112192119"
+let phoneNumber = "254104260236"
 let owner = JSON.parse(fs.readFileSync('./data/owner.json'))
 
-global.botname = "JINX-XMD BOT"
+global.botname = "DAVE-MD BOT"
 global.themeemoji = "•"
 
 const settings = require('./settings')
@@ -155,7 +155,7 @@ async function startXeonBotInc() {
                             isForwarded: true,
                             forwardedNewsletterMessageInfo: {
                                 newsletterJid: '120363302677217436@newsletter',
-                                newsletterName: 'JINX-XMD',
+                                newsletterName: 'DAVE-MD',
                                 serverMessageId: -1
                             }
                         }
@@ -255,7 +255,7 @@ async function startXeonBotInc() {
                     isForwarded: true,
                     forwardedNewsletterMessageInfo: {
                         newsletterJid: '120363302677217436@newsletter',
-                        newsletterName: 'JINX-XMD',
+                        newsletterName: 'DAVE-MD',
                         serverMessageId: -1
                     }
                 }

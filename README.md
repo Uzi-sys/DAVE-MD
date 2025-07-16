@@ -4,7 +4,7 @@ This is a WhatsApp bot built using the Baileys library for group management, inc
 
 <div align="center"> 
   <a href="https://git.io/typing-svg"> 
-    <img src="https://readme-typing-svg.demolab.com?font=Ribeye&size=50&pause=1000&color=33ff00&center=true&width=910&height=100&lines=JINX-XMD;Multi+Device+Whatsapp+Bot;Coded+By+Caseyrhodes" alt="Typing SVG" />
+    <img src="https://readme-typing-svg.demolab.com?font=Ribeye&size=50&pause=1000&color=33ff00&center=true&width=910&height=100&lines=DAVE-MD;Multi+Device+Whatsapp+Bot;Coded+By+Caseyrhodes" alt="Typing SVG" />
   </a> 
 </div> 
 
@@ -118,7 +118,7 @@ It is lightweight and can be easily customized to add more commands as per your 
 
     ```bash
     git clone https://github.com/caseyweb/DAVE-MD.git
-    cd JINX-XMD
+    cd DAVE-MD
     ```
 
 2. **Install the dependencies:**
