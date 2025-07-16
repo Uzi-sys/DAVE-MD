@@ -7,105 +7,94 @@ const fs = require('fs');
 const fetch = require('node-fetch');
 const ytdl = require('ytdl-core');
 const path = require('path');
-const axios = require('axios');       
+const axios = require('axios');
 const ffmpeg = require('fluent-ffmpeg');
 const { addWelcome, delWelcome, isWelcomeOn, addGoodbye, delGoodBye, isGoodByeOn } = require('./lib/index');
 
-(function(){
-    const _0x1a2d = [
-        './commands/tagall',
-        './commands/help',
-        './commands/ban',
-        './commands/promote',
-        './commands/demote',
-        './commands/mute',
-        './commands/unmute',
-        './commands/sticker',
-        './lib/isAdmin',
-        './commands/warn',
-        './commands/warnings',
-        './commands/tts',
-        './commands/tictactoe',
-        './commands/topmembers',
-        './commands/owner',
-        './commands/delete',
-        './commands/antilink',
-        './lib/antilink',
-        './commands/meme',
-        './commands/tag',
-        './commands/joke',
-        './commands/quote',
-        './commands/fact',
-        './commands/weather',
-        './commands/news',
-        './commands/kick',
-        './commands/simage',
-        './commands/attp',
-        './commands/hangman',
-        './commands/trivia',
-        './commands/compliment',
-        './commands/insult',
-        './commands/eightball',
-        './commands/lyrics',
-        './commands/dare',
-        './commands/truth',
-        './commands/clear',
-        './commands/ping',
-        './commands/alive'
-    ];
-    const _0x3f2b = [
-        './commands/img-blur',
-        './commands/welcome',
-        './commands/goodbye',
-        './commands/github',
-        './lib/antibadword',
-        './commands/antibadword',
-        './commands/chatbot',
-        './commands/take',
-        './commands/flirt',
-        './commands/character',
-        './commands/wasted',
-        './commands/ship',
-        './commands/groupinfo',
-        './commands/resetlink',
-        './commands/staff',
-        './commands/unban',
-        './commands/emojimix',
-        './commands/promote',
-        './commands/demote',
-        './commands/viewonce',
-        './commands/clearsession',
-        './commands/autostatus',
-        './commands/simp',
-        './commands/stupid',
-        './commands/stickertelegram',
-        './commands/textmaker',
-        './commands/antidelete',
-        './commands/cleartmp',
-        './commands/setpp',
-        './commands/instagram',
-        './commands/facebook',
-        './commands/play',
-        './commands/tiktok',
-        './commands/song',
-        './commands/ai',
-        './commands/translate',
-        './commands/ss',
-        './lib/reactions',
-        './commands/goodnight',
-        './commands/shayari',
-        './commands/roseday',
-        './commands/imagine',
-        './commands/video'
-    ];
-    // Imports from _0x1a2d and _0x3f2b
-    for (let i = 0; i < _0x1a2d.length; i++) {
-        require(_0x1a2d[i]);
-    }
-    for (let i = 0; i < _0x3f2b.length; i++) {
-        require(_0x3f2b[i]);
-    }
-})();
+// Command imports
+const tagAllCommand = require('./commands/tagall');
+const helpCommand = require('./commands/help');
+const banCommand = require('./commands/ban');
+const { promoteCommand } = require('./commands/promote');
+const { demoteCommand } = require('./commands/demote');
+const muteCommand = require('./commands/mute');
+const unmuteCommand = require('./commands/unmute');
+const stickerCommand = require('./commands/sticker');
+const isAdmin = require('./lib/isAdmin');
+const warnCommand = require('./commands/warn');
+const warningsCommand = require('./commands/warnings');
+const ttsCommand = require('./commands/tts');
+const { tictactoeCommand, handleTicTacToeMove } = require('./commands/tictactoe');
+const { incrementMessageCount, topMembers } = require('./commands/topmembers');
+const ownerCommand = require('./commands/owner');
+const deleteCommand = require('./commands/delete');
+const { handleAntilinkCommand, handleLinkDetection } = require('./commands/antilink');
+const { Antilink } = require('./lib/antilink');
+const memeCommand = require('./commands/meme');
+const tagCommand = require('./commands/tag');
+const jokeCommand = require('./commands/joke');
+const quoteCommand = require('./commands/quote');
+const factCommand = require('./commands/fact');
+const weatherCommand = require('./commands/weather');
+const newsCommand = require('./commands/news');
+const kickCommand = require('./commands/kick');
+const simageCommand = require('./commands/simage');
+const attpCommand = require('./commands/attp');
+const { startHangman, guessLetter } = require('./commands/hangman');
+const { startTrivia, answerTrivia } = require('./commands/trivia');
+const { complimentCommand } = require('./commands/compliment');
+const { insultCommand } = require('./commands/insult');
+const { eightBallCommand } = require('./commands/eightball');
+const { lyricsCommand } = require('./commands/lyrics');
+const { dareCommand } = require('./commands/dare');
+const { truthCommand } = require('./commands/truth');
+const { clearCommand } = require('./commands/clear');
+const pingCommand = require('./commands/ping');
+const aliveCommand = require('./commands/alive');
+const blurCommand = require('./commands/img-blur');
+const welcomeCommand = require('./commands/welcome');
+const goodbyeCommand = require('./commands/goodbye');
+const githubCommand = require('./commands/github');
+const { handleAntiBadwordCommand, handleBadwordDetection } = require('./lib/antibadword');
+const antibadwordCommand = require('./commands/antibadword');
+const { handleChatbotCommand, handleChatbotResponse } = require('./commands/chatbot');
+const takeCommand = require('./commands/take');
+const { flirtCommand } = require('./commands/flirt');
+const characterCommand = require('./commands/character');
+const wastedCommand = require('./commands/wasted');
+const shipCommand = require('./commands/ship');
+const groupInfoCommand = require('./commands/groupinfo');
+const resetlinkCommand = require('./commands/resetlink');
+const staffCommand = require('./commands/staff');
+const unbanCommand = require('./commands/unban');
+const emojimixCommand = require('./commands/emojimix');
+const { handlePromotionEvent } = require('./commands/promote');
+const { handleDemotionEvent } = require('./commands/demote');
+const viewOnceCommand = require('./commands/viewonce');
+const clearSessionCommand = require('./commands/clearsession');
+const { autoStatusCommand, handleStatusUpdate } = require('./commands/autostatus');
+const { simpCommand } = require('./commands/simp');
+const { stupidCommand } = require('./commands/stupid');
+const stickerTelegramCommand = require('./commands/stickertelegram');
+const textmakerCommand = require('./commands/textmaker');
+const { handleAntideleteCommand, handleMessageRevocation, storeMessage } = require('./commands/antidelete');
+const clearTmpCommand = require('./commands/cleartmp');
+const setProfilePicture = require('./commands/setpp');
+const instagramCommand = require('./commands/instagram');
+const facebookCommand = require('./commands/facebook');
+const playCommand = require('./commands/play');
+const tiktokCommand = require('./commands/tiktok');
+const songCommand = require('./commands/song');
+const aiCommand = require('./commands/ai');
+const { handleTranslateCommand } = require('./commands/translate');
+const { handleSsCommand } = require('./commands/ss');
+const { addCommandReaction, handleAreactCommand } = require('./lib/reactions');
+const { goodnightCommand } = require('./commands/goodnight');
+const { shayariCommand } = require('./commands/shayari');
+const { rosedayCommand } = require('./commands/roseday');
+const imagineCommand = require('./commands/imagine');
+const videoCommand = require('./commands/video');
+
 
 // Global settings
 global.packname = settings.packname;
