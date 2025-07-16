@@ -1,0 +1,13 @@
+{
+  "name": "dave-md-bot",
+  "build": {
+    "builder": "NIXPACKS",
+    "buildCommand": "npm install"
+  },
+  "start": {
+    "cmd": "npm start",
+    "env": {
+      "NODE_ENV": "production"
+    }
+  }
+}
