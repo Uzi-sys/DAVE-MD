@@ -18,7 +18,7 @@ If you discover a security issue or vulnerability in this project:
 - 📩 **Please report it directly to the project owner:**
   - **Name:** Gifted Dave 
 
-  - **GitHub Repo:** [github.com/giftedsession/dark-dave](https://github.com/giftedsession/DAVE-MD)
+  - **GitHub Repo:** (https://github.com/giftedsession/DAVE-MD)
 
 - 🔐 Do **not** open public GitHub issues for security flaws.
 
