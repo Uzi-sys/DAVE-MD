@@ -1,10 +1,6 @@
-// GIFTEDDAVE PROPERTY 😊
-
-const _0x5c3c=['../settings','fs','path','join','__dirname','../assets/bot_image.jpg','existsSync','readFileSync','sendMessage','image','caption','contextInfo','forwardingScore','isForwarded','forwardedNewsletterMessageInfo','newsletterJid','120363400480173280@newsletter','newsletterName','POWERED BY GIFTEDDAVE TECH','serverMessageId','quoted','console','error','Bot image not found at:','text','Error in help command:','module','exports'];(function(_0x1be0bf,_0x5e3b4d){const _0x2e7e8a=function(_0x1c69b8){while(--_0x1c69b8){_0x1be0bf['push'](_0x1be0bf['shift']());}};_0x2e7e8a(++_0x5e3b4d);}(_0x5c3c,0x1d));const _0x4f9e=function(_0x1be0bf,_0x5e3b4d){_0x1be0bf=_0x1be0bf-0x0;let _0x2e7e8a=_0x5c3c[_0x1be0bf];return _0x2e7e8a;};
-
-const settings = require(_0x4f9e(0x0));
-const fs = require(_0x4f9e(0x1));
-const path = require(_0x4f9e(0x2));
+const settings = require('../settings')
+const fs = require('fs')
+const path = require('path')
 
 async function helpCommand(sock, m, quoted) {
     const helpText = `
@@ -20,7 +16,7 @@ async function helpCommand(sock, m, quoted) {
 ┃❍⁠⁠╰─────────────────────────────
 ╰━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┈⊷
 
-*📖 𝗔𝗩𝗔𝗜𝗟𝗔𝗕𝗟𝗘 𝗖𝗢𝗠𝗠𝗔𝗡𝗗𝗦:*
+📖 𝗔𝗩𝗔𝗜𝗟𝗔𝗕𝗟𝗘 𝗖𝗢𝗠𝗠𝗔𝗡𝗗𝗦:
 
 ╭━⟪ 𝗚𝗘𝗡𝗘𝗥𝗔𝗟 ⟫━┈⊷
 ┃ • help  
@@ -159,44 +155,47 @@ async function helpCommand(sock, m, quoted) {
 ╰━━━━━━━━━━━━━━━┈⊷
 
 > ⚙️ 𝙍𝙀𝙂𝘼𝙍𝘿𝙎 : 𝗗𝗔𝗩𝗘 𝗧𝗘𝗖𝗛 👻
-`;
+`
 
     try {
-        const imagePath = path[_0x4f9e(0x3)](global[_0x4f9e(0x4)],_0x4f9e(0x5));
-        if (fs[_0x4f9e(0x6)](imagePath)) {
-            const botImage = fs[_0x4f9e(0x7)](imagePath);
-            await sock[_0x4f9e(0x8)](m, {
-                [_0x4f9e(0x9)]: botImage,
-                [_0x4f9e(0xa)]: helpText,
-                [_0x4f9e(0xb)]: {
-                    [_0x4f9e(0xc)]: 1,
-                    [_0x4f9e(0xd)]: true,
-                    [_0x4f9e(0xe)]: {
-                        [_0x4f9e(0xf)]: _0x4f9e(0x10),
-                        [_0x4f9e(0x11)]: _0x4f9e(0x12),
-                        [_0x4f9e(0x13)]: -1,
+        const jid = m.key?.remoteJid || m.chat
+        const imagePath = path.join(__dirname, '../assets/bot_image.jpg')
+
+        if (fs.existsSync(imagePath)) {
+            const botImage = fs.readFileSync(imagePath)
+            await sock.sendMessage(jid, {
+                image: botImage,
+                caption: helpText,
+                contextInfo: {
+                    forwardingScore: 1,
+                    isForwarded: true,
+                    forwardedNewsletterMessageInfo: {
+                        newsletterJid: "120363400480173280@newsletter",
+                        newsletterName: "POWERED BY GIFTEDDAVE TECH",
+                        serverMessageId: -1
                     }
                 }
-            }, { [_0x4f9e(0x14)]: quoted });
+            }, { quoted })
         } else {
-            global[_0x4f9e(0x15)][_0x4f9e(0x16)](_0x4f9e(0x17), imagePath);
-            await sock[_0x4f9e(0x8)](m, {
-                [_0x4f9e(0x18)]: helpText,
-                [_0x4f9e(0xb)]: {
-                    [_0x4f9e(0xc)]: 1,
-                    [_0x4f9e(0xd)]: true,
-                    [_0x4f9e(0xe)]: {
-                        [_0x4f9e(0xf)]: _0x4f9e(0x10),
-                        [_0x4f9e(0x11)]: _0x4f9e(0x12),
-                        [_0x4f9e(0x13)]: -1,
+            console.warn("📛 Bot image not found. Sending text-only menu.")
+            await sock.sendMessage(jid, {
+                text: helpText,
+                contextInfo: {
+                    forwardingScore: 1,
+                    isForwarded: true,
+                    forwardedNewsletterMessageInfo: {
+                        newsletterJid: "120363400480173280@newsletter",
+                        newsletterName: "POWERED BY GIFTEDDAVE TECH",
+                        serverMessageId: -1
                     }
                 }
-            });
+            }, { quoted })
         }
     } catch (err) {
-        global[_0x4f9e(0x15)][_0x4f9e(0x16)](_0x4f9e(0x19), err);
-        await sock[_0x4f9e(0x8)](m, { [_0x4f9e(0x18)]: helpText });
+        console.error("❌ Error in helpCommand:", err)
+        const jid = m.key?.remoteJid || m.chat || 'default@jid'
+        await sock.sendMessage(jid, { text: helpText }, { quoted })
     }
 }
 
-global[_0x4f9e(0x1a)][_0x4f9e(0x1b)] = helpCommand;
+module.exports = helpCommand
