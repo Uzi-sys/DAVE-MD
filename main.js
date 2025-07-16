@@ -99,7 +99,7 @@ const videoCommand = require('./commands/video');
 // Global settings
 global.packname = settings.packname;
 global.author = settings.author;
-global.channelLink = "https://whatsapp.com/channel/0029VakUEfb4o7qVdkwPk83E";
+global.channelLink = "https://whatsapp.com/channel/0029VbApvFQ2Jl84lhONkc3k";
 global.ytch = "Mr Caseyrhodes tech 👻";
 
 // Add this near the top of main.js with other global configurations
