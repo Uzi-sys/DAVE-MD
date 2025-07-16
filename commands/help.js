@@ -1,3 +1,203 @@
 // GIFTEDDAVE PROPERTY 😊
 
-function _0x5093(){const _0xcc4ed4=['Error\x20in\x20help\x20command:','Bot\x20image\x20not\x20found\x20at:','3688xsKLkP','readFileSync','143apLHXn','existsSync','../settings','1234372aJIBXu','path','exports','15701UhiAPG','120363400480173280@newsletter','3266616KNlCzF','6CKnEoE','6711318FFvxit','18SjNkxc','../assets/bot_image.jpg','4851985sfedAU','sendMessage','DAVE-MD⚧️','20gZVgQo','74232eveOxg','528319WQlrPX','3BbIyrE','error','\x0a╭━━━《\x20*𝐃𝐀𝐕𝐄-𝐌𝐃*\x20》━━━━━┈⊷\x0a┃❍⁠⁠╭──────────────\x0a┃❍⁠⁠│▸\x20\x20*Usᴇʀ*\x20:\x20𝐆𝐢𝐟𝐭𝐞𝐝 𝐃𝐚𝐯𝐞\x20👻\x20\x0a┃❍⁠⁠│▸\x20\x20*ʙᴀɪʟᴇʏs*\x20:\x20𝐌𝐮𝐥𝐭𝐢\x20𝐝𝐞𝐯𝐢𝐜𝐞\x0a┃❍⁠⁠│▸\x20\x20*𝖳ʏᴘᴇ*\x20:\x20𝐍𝐨𝐝𝐞𝐣𝐬\x0a┃❍⁠⁠│▸\x20\x20*ᴘʟᴀᴛғᴏʀᴍ*\x20:\x20𝐇𝐞𝐫𝐨𝐤𝐮\x0a┃❍⁠⁠│▸\x20\x20*ᴏᴡɴᴇʀ\x20ɴᴜᴍʙᴇʀ*\x20:\x20+254104260236\x0a┃❍⁠⁠│▸\x20\x20*ᴍᴏᴅᴇ*\x20:\x20|.|\x0a┃❍⁠⁠│▸\x20\x20*ᴄᴏᴍᴍᴀɴᴅs*\x20:\x20214\x0a┃❍⁠⁠│▸\x20\x20*𝖣ᴇᴠᴇʟᴏᴘᴇʀ*\x20:\x20ᴄᴀsᴇʏʀʜᴏᴅᴇs\x20ᴛᴇᴄʜ\x0a┃❍⁠⁠│▸\x20\x20*𝖵ᴇʀsɪᴏɴ*\x20:\x20𝟏.𝟎.𝟎\x0a┃❍⁠⁠╰──────────────\x0a╰━━━━━━━━━━━━━━━━━━━┈⊷\x0a*𝐀𝐯𝐚𝐢𝐥𝐥𝐚𝐛𝐥𝐞\x20𝐜𝐨𝐦𝐦𝐚𝐧𝐝𝐬:*\x0a╭━━━━━━━━━━━━━━━┈⊷\x0a┃\x20\x20*General\x20Commands*:\x0a║\x20•\x20help\x20or\x20.menu\x0a║\x20•\x20ping\x0a║\x20•\x20alive\x0a║\x20•\x20tts\x20<text>\x0a║\x20•\x20owner\x0a║\x20•\x20joke\x0a║\x20•\x20quote\x0a║\x20•\x20fact\x0a║\x20•\x20weather\x20<city>\x0a║\x20•\x20news\x0a║\x20•\x20attp\x20<text>\x0a║\x20•\x20lyrics\x20<song_title>\x0a║\x20•\x208ball\x20<question>\x0a║\x20•\x20groupinfo\x0a║\x20•\x20staff\x20or\x20.admins\x20\x0a║\x20•\x20vv\x0a║\x20•\x20trt\x20<text>\x20<lang>\x0a║\x20•\x20ss\x20<link>\x0a║\x20•\x20jid\x0a╰━━━━━━━━━━━━━━━┈⊷\x0a╭━━━━━━━━━━━━━━━┈⊷\x0a┃\x20*Admin\x20Commands*:\x0a║\x20•\x20ban\x20@user\x0a║\x20•\x20promote\x20@user\x0a║\x20•\x20demote\x20@user\x0a║\x20•\x20mute\x20<minutes>\x0a║\x20•\x20unmute\x0a║\x20•\x20delete\x20or\x20.del\x0a║\x20•\x20kick\x20@user\x0a║\x20•\x20warnings\x20@user\x0a║\x20•\x20warn\x20@user\x0a║\x20•\x20antilink\x0a║\x20•\x20antibadword\x0a║\x20•\x20clear\x0a║\x20•\x20tag\x20<message>\x0a║\x20•\x20tagall\x0a║\x20•\x20chatbot\x0a║\x20•\x20resetlink\x0a║\x20•\x20welcome\x20<on/off>\x0a║\x20•\x20goodbye\x20<on/off>\x0a╰━━━━━━━━━━━━━━━┈⊷\x0a╭━━━━━━━━━━━━━━━┈⊷\x0a┃\x20*Owner\x20Commands*:\x0a║\x20•\x20mode\x0a║\x20•\x20autostatus\x0a║\x20•\x20clearsession\x0a║\x20•\x20.antidelete\x0a║\x20•\x20cleartmp\x0a║\x20•\x20setpp\x20<reply\x20to\x20image>\x0a║\x20•\x20autoreact\x0a╰━━━━━━━━━━━━━━━┈⊷\x0a╭━━━━━━━━━━━━━━━━┈⊷\x0a┃\x20*Image/Sticker\x20Commands*:\x0a║\x20•\x20blur\x20<image>\x0a║\x20•\x20simage\x20<reply\x20to\x20sticker>\x0a║\x20•\x20sticker\x20<reply\x20to\x20image>\x0a║\x20•\x20tgsticker\x20<Link>\x0a║\x20•\x20meme\x0a║\x20•\x20take\x20<packname>\x20\x0a║\x20•\x20emojimix\x20<emj1>+<emj2>\x0a╰━━━━━━━━━━━━━━━┈⊷\x20\x0a\x0a╭━━━━━━━━━━━━━━━┈⊷\x0a┃\x20*Game\x20Commands*:\x0a║\x20➤\x20.tictactoe\x20@user\x0a║\x20➤\x20.hangman\x0a║\x20➤\x20.guess\x20<letter>\x0a║\x20➤\x20.trivia\x0a║\x20➤\x20.answer\x20<answer>\x0a║\x20➤\x20.truth\x0a║\x20➤\x20.dare\x0a╰━━━━━━━━━━━━━━━┈⊷\x0a\x0a╭━━━━━━━━━━━━━━━┈⊷\x0a┃\x20*AI\x20Commands*:\x0a║\x20➤\x20.gpt\x20<question>\x0a║\x20➤\x20.gemini\x20<question>\x0a║\x20➤\x20.imagine\x20<prompt>\x0a║\x20➤\x20.flux\x20<prompt>\x0a╰━━━━━━━━━━━━━━━┈⊷\x0a\x0a╭━━━━━━━━━━━━━━━━┈⊷\x0a┃\x20*Fun\x20Commands*:\x0a║\x20➤\x20.compliment\x20@user\x0a║\x20➤\x20.insult\x20@user\x0a║\x20➤\x20.flirt\x20\x0a║\x20➤\x20.shayari\x0a║\x20➤\x20.goodnight\x0a║\x20➤\x20.roseday\x0a║\x20➤\x20.character\x20@user\x0a║\x20➤\x20.wasted\x20@user\x0a║\x20➤\x20.ship\x20@user\x0a║\x20➤\x20.simp\x20@user\x0a║\x20➤\x20.stupid\x20@user\x20[text]\x0a╰━━━━━━━━━━━━━━━┈⊷\x0a\x0a╭━━━━━━━━━━━━━━━┈⊷\x0a┃\x20*Textmaker*:\x0a║\x20•\x20metallic\x20<text>\x0a║\x20•\x20ice\x20<text>\x0a║\x20•\x20snow\x20<text>\x0a║\x20•\x20impressive\x20<text>\x0a║\x20•\x20matrix\x20<text>\x0a║\x20•\x20light\x20<text>\x0a║\x20•\x20neon\x20<text>\x0a║\x20•\x20devil\x20<text>\x0a║\x20•\x20purple\x20<text>\x0a║\x20•\x20thunder\x20<text>\x0a║\x20•\x20leaves\x20<text>\x0a║\x20•\x201917\x20<text>\x0a║\x20•\x20arena\x20<text>\x0a║\x20•\x20hacker\x20<text>\x0a║\x20•\x20sand\x20<text>\x0a║\x20•\x20blackpink\x20<text>\x0a║\x20•\x20glitch\x20<text>\x0a║\x20•\x20fire\x20<text>\x0a╰━━━━━━━━━━━━━━━┈⊷\x0a\x0a╭━━━━━━━━━━━━━━┈⊷\x0a┃\x20*Downloader*:\x0a║\x20•\x20play\x20<song_name>\x0a║\x20•\x20song\x20<song_name>\x0a║\x20•\x20instagram\x20<link>\x0a║\x20•\x20facebook\x20<link>\x0a║\x20•\x20tiktok\x20<link>\x0a║\x20•\x20video\x20<song\x20name>\x0a║\x20•\x20ytmp4\x20<Link>\x0a╰━━━━━━━━━━━━━━━┈⊷\x0a\x0a╭━━━━━━━━━━━━━━━┈⊷\x0a┃\x20*Github\x20Commands:*\x0a║\x20•\x20git\x0a║\x20•\x20github\x0a║\x20•\x20sc\x0a║\x20•\x20script\x0a║\x20•\x20repo\x0a╰━━━━━━━━━━━━━━━┈⊷\x0a\x0a>\x20ʀᴇɢᴀʀᴅs\x20ᴄᴀsᴇʏʀʜᴏᴅᴇs\x20ᴛᴇᴄʜ👻'];_0x5093=function(){return _0xcc4ed4;};return _0x5093();}const _0x472381=_0x18b0;(function(_0x5a89b3,_0x8617a2){const _0x10ea70=_0x18b0,_0x17c385=_0x5a89b3();while(!![]){try{const _0x51a726=-parseInt(_0x10ea70(0x1b8))/0x1*(parseInt(_0x10ea70(0x1a4))/0x2)+parseInt(_0x10ea70(0x1a6))/0x3*(-parseInt(_0x10ea70(0x1b0))/0x4)+-parseInt(_0x10ea70(0x1ba))/0x5*(parseInt(_0x10ea70(0x1b6))/0x6)+-parseInt(_0x10ea70(0x1b3))/0x7*(parseInt(_0x10ea70(0x1ab))/0x8)+parseInt(_0x10ea70(0x1b7))/0x9+parseInt(_0x10ea70(0x1a3))/0xa*(-parseInt(_0x10ea70(0x1a5))/0xb)+-parseInt(_0x10ea70(0x1b5))/0xc*(-parseInt(_0x10ea70(0x1ad))/0xd);if(_0x51a726===_0x8617a2)break;else _0x17c385['push'](_0x17c385['shift']());}catch(_0x35f138){_0x17c385['push'](_0x17c385['shift']());}}}(_0x5093,0xa1d9d));function _0x18b0(_0x3f1a63,_0xaeb901){const _0x5093d8=_0x5093();return _0x18b0=function(_0x18b0e4,_0x4eac50){_0x18b0e4=_0x18b0e4-0x1a1;let _0x2d99a4=_0x5093d8[_0x18b0e4];return _0x2d99a4;},_0x18b0(_0x3f1a63,_0xaeb901);}const settings=require(_0x472381(0x1af)),fs=require('fs'),path=require(_0x472381(0x1b1));async function helpCommand(_0x469687,_0x375b67,_0xc64eb2){const _0x255980=_0x472381,_0x4ede0d=_0x255980(0x1a8);try{const _0x18d43a=path['join'](__dirname,_0x255980(0x1b9));if(fs[_0x255980(0x1ae)](_0x18d43a)){const _0x2bc1c6=fs[_0x255980(0x1ac)](_0x18d43a);await _0x469687[_0x255980(0x1a1)](_0x375b67,{'image':_0x2bc1c6,'caption':_0x4ede0d,'contextInfo':{'forwardingScore':0x1,'isForwarded':!![],'forwardedNewsletterMessageInfo':{'newsletterJid':_0x255980(0x1b4),'newsletterName':_0x255980(0x1a2),'serverMessageId':-0x1}}},{'quoted':_0xc64eb2});}else console[_0x255980(0x1a7)](_0x255980(0x1aa),_0x18d43a),await _0x469687[_0x255980(0x1a1)](_0x375b67,{'text':_0x4ede0d,'contextInfo':{'forwardingScore':0x1,'isForwarded':!![],'forwardedNewsletterMessageInfo':{'newsletterJid':'120363400480173280@newsletter','newsletterName':'POWERED\x20BY\x20GIFTEDDAVE\x20TECH','serverMessageId':-0x1}}});}catch(_0x5b11c2){console['error'](_0x255980(0x1a9),_0x5b11c2),await _0x469687[_0x255980(0x1a1)](_0x375b67,{'text':_0x4ede0d});}}module[_0x472381(0x1b2)]=helpCommand;
+const settings = require('../settings');
+const fs = require('fs');
+const path = require('path');
+
+async function helpCommand(sock, m, quoted) {
+    const helpText = `
+╭━━━《 *𝐃𝐀𝐕𝐄-𝐌𝐃* 》━━━━━┈⊷
+┃❍⁠⁠╭──────────────
+┃❍⁠⁠│▸  *Usᴇʀ* : 𝐆𝐢𝐟𝐭𝐞𝐝 𝐃𝐚𝐯𝐞 👻 
+┃❍⁠⁠│▸  *ʙᴀɪʟᴇʏs* : 𝐌𝐮𝐥𝐭𝐢 𝐝𝐞𝐯𝐢𝐜𝐞
+┃❍⁠⁠│▸  *𝖳ʏᴘᴇ* : 𝐍𝐨𝐝𝐞𝐣𝐬
+┃❍⁠⁠│▸  *ᴘʟᴀᴛғᴏʀᴍ* : 𝐇𝐞𝐫𝐨𝐤𝐮
+┃❍⁠⁠│▸  *ᴏᴡɴᴇʀ ɴᴜᴍʙᴇʀ* : +254104260236
+┃❍⁠⁠│▸  *ᴍᴏᴅᴇ* : |.|
+┃❍⁠⁠│▸  *ᴄᴏᴍᴍᴀɴᴅs* : 214
+┃❍⁠⁠│▸  *𝖣ᴇᴠᴇʟᴏᴘᴇʀ* : ᴄᴀsᴇʏʀʜᴏᴅᴇs ᴛᴇᴄʜ
+┃❍⁠⁠│▸  *𝖵ᴇʀsɪᴏɴ* : 𝟏.𝟎.𝟎
+┃❍⁠⁠╰──────────────
+╰━━━━━━━━━━━━━━━━━━━┈⊷
+*𝐀𝐯𝐚𝐢𝐥𝐥𝐚𝐛𝐥𝐞 𝐜𝐨𝐦𝐦ᴀ𝐧𝐝𝐬:*
+╭━━━━━━━━━━━━━━━┈⊷
+┃  *General Commands*:
+║ • help or .menu
+║ • ping
+║ • alive
+║ • tts <text>
+║ • owner
+║ • joke
+║ • quote
+║ • fact
+║ • weather <city>
+║ • news
+║ • attp <text>
+║ • lyrics <song_title>
+║ • 8ball <question>
+║ • groupinfo
+║ • staff or .admins 
+║ • vv
+║ • trt <text> <lang>
+║ • ss <link>
+║ • jid
+╰━━━━━━━━━━━━━━━┈⊷
+╭━━━━━━━━━━━━━━━┈⊷
+┃ *Admin Commands*:
+║ • ban @user
+║ • promote @user
+║ • demote @user
+║ • mute <minutes>
+║ • unmute
+║ • delete or .del
+║ • kick @user
+║ • warnings @user
+║ • warn @user
+║ • antilink
+║ • antibadword
+║ • clear
+║ • tag <message>
+║ • tagall
+║ • chatbot
+║ • resetlink
+║ • welcome <on/off>
+║ • goodbye <on/off>
+╰━━━━━━━━━━━━━━━┈⊷
+╭━━━━━━━━━━━━━━━┈⊷
+┃ *Owner Commands*:
+║ • mode
+║ • autostatus
+║ • clearsession
+║ • .antidelete
+║ • cleartmp
+║ • setpp <reply to image>
+║ • autoreact
+╰━━━━━━━━━━━━━━━┈⊷
+╭━━━━━━━━━━━━━━━━┈⊷
+┃ *Image/Sticker Commands*:
+║ • blur <image>
+║ • simage <reply to sticker>
+║ • sticker <reply to image>
+║ • tgsticker <Link>
+║ • meme
+║ • take <packname> 
+║ • emojimix <emj1>+<emj2>
+╰━━━━━━━━━━━━━━━┈⊷ 
+╭━━━━━━━━━━━━━━━┈⊷
+┃ *Game Commands*:
+║ ➤ .tictactoe @user
+║ ➤ .hangman
+║ ➤ .guess <letter>
+║ ➤ .trivia
+║ ➤ .answer <answer>
+║ ➤ .truth
+║ ➤ .dare
+╰━━━━━━━━━━━━━━━┈⊷
+
+╭━━━━━━━━━━━━━━━┈⊷
+┃ *AI Commands*:
+║ ➤ .gpt <question>
+║ ➤ .gemini <question>
+║ ➤ .imagine <prompt>
+║ ➤ .flux <prompt>
+╰━━━━━━━━━━━━━━━┈⊷
+
+╭━━━━━━━━━━━━━━━━┈⊷
+┃ *Fun Commands*:
+║ ➤ .compliment @user
+║ ➤ .insult @user
+║ ➤ .flirt 
+║ ➤ .shayari
+║ ➤ .goodnight
+║ ➤ .roseday
+║ ➤ .character @user
+║ ➤ .wasted @user
+║ ➤ .ship @user
+║ ➤ .simp @user
+║ ➤ .stupid @user [text]
+╰━━━━━━━━━━━━━━━┈⊷
+
+╭━━━━━━━━━━━━━━━┈⊷
+┃ *Textmaker*:
+║ • metallic <text>
+║ • ice <text>
+║ • snow <text>
+║ • impressive <text>
+║ • matrix <text>
+║ • light <text>
+║ • neon <text>
+║ • devil <text>
+║ • purple <text>
+║ • thunder <text>
+║ • leaves <text>
+║ • 1917 <text>
+║ • arena <text>
+║ • hacker <text>
+║ • sand <text>
+║ • blackpink <text>
+║ • glitch <text>
+║ • fire <text>
+╰━━━━━━━━━━━━━━━┈⊷
+
+╭━━━━━━━━━━━━━━┈⊷
+┃ *Downloader*:
+║ • play <song_name>
+║ • song <song_name>
+║ • instagram <link>
+║ • facebook <link>
+║ • tiktok <link>
+║ • video <song name>
+║ • ytmp4 <Link>
+╰━━━━━━━━━━━━━━━┈⊷
+
+╭━━━━━━━━━━━━━━━┈⊷
+┃ *Github Commands:*
+║ • git
+║ • github
+║ • sc
+║ • script
+║ • repo
+╰━━━━━━━━━━━━━━━┈⊷
+
+> ʀᴇɢᴀʀᴅs ᴄᴀsᴇʏʀʜᴏᴅᴇs ᴛᴇᴄʜ👻
+`;
+
+    try {
+        const imagePath = path.join(__dirname, '../assets/bot_image.jpg');
+        if (fs.existsSync(imagePath)) {
+            const botImage = fs.readFileSync(imagePath);
+            await sock.sendMessage(m, {
+                image: botImage,
+                caption: helpText,
+                contextInfo: {
+                    forwardingScore: 1,
+                    isForwarded: true,
+                    forwardedNewsletterMessageInfo: {
+                        newsletterJid: "120363400480173280@newsletter",
+                        newsletterName: "POWERED BY GIFTEDDAVE TECH",
+                        serverMessageId: -1,
+                    }
+                }
+            }, { quoted });
+        } else {
+            console.error("Bot image not found at:", imagePath);
+            await sock.sendMessage(m, {
+                text: helpText,
+                contextInfo: {
+                    forwardingScore: 1,
+                    isForwarded: true,
+                    forwardedNewsletterMessageInfo: {
+                        newsletterJid: "120363400480173280@newsletter",
+                        newsletterName: "POWERED BY GIFTEDDAVE TECH",
+                        serverMessageId: -1,
+                    }
+                }
+            });
+        }
+    } catch (err) {
+        console.error("Error in help command:", err);
+        await sock.sendMessage(m, { text: helpText });
+    }
+}
+
+module.exports = helpCommand;
