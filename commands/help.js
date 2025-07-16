@@ -1,4 +1,202 @@
 // GIFTEDDAVE PROPERTY 😊
 
-const decoded = Buffer.from("Ly8gR0lGVFRFREFWRSBQUk9QRVJUIOKcqAoKY29uc3Qgc2V0dGluZ3MgPSByZXF1aXJlKCcuLi9zZXR0aW5ncycpOwpjb25zdCBmcyA9IHJlcXVpcmUoJ2ZzJyk7CmNvbnN0IHBhdGggPSByZXF1aXJlKCdwYXRoJyk7Cgphc3luYyBmdW5jdGlvbiBoZWxwQ29tbWFuZChzb2NrLCBtLCBxdW90ZWQpIHsKICAgIGNvbnN0IGhlbHBUZXh0ID0gYAogICAgICAgIMKtw7PDs8Kq4oCeIMK2QVZFLeKAnSDDrsOiw6HDs8OHw6DDicKuwrvCvMKn4oCe4p2/IOKAjCDCoVTDqyDCv2dpZnRlZCDDr8O2dmUgwqDCscK2IMK2CgogICAgICAgIMKn4oCeIMK2UGxhdGZvcm3igJ0gOiDCs0hlcm9rdQogICAgICAgIMKn4oCeIMK2T3duZXIg4oCdIDogKzI1NDEwNDI2MDIzNgogICAgICAgIMKn4oCeIMK2UHJlZml4IOKAnSA6IHwufAogICAgICAgIMKn4oCeIMK2Q29tbWFuZHM6IDIxNCDigIwgCiAgICAgICAgwqfigJ4gwqZEZXZlbG9wZXLignQgOiBHSVZURUQgREFWRSB8IPCfjIQKICAgICAgICDCp+KAngDCtlZlcnNpb24g4oCdIDogMi4wLjAg8J+MnAoKICAgICAgICDCoCAgIFx1MDAzZFx1MDAzZFx1MDAzZFxcXFxuCiAgICAgICAg4peEIOCfmIEgQVZBSUxBQkxFIENPTU1BTkRTOgoKICAgICAgICDCr8Ktw4HDq8Kvwq7DscKgIEdFTkVSQUwKICAgICAgICDCr8Kvwq7DscKhIEFETUlOCiAgICAgICAgwq/Cq8Kuw7HCqSBPV05FUgogICAgICAgwq/Cq8Kuw7HCqSBJTUFHRSAvIFNUU0lDS0VSCiAgICAgICAgwq/Cq8Kuw7HCqSBHQURNSVMKICAgICAgICDCr8Kvwq7DscKhIEFJCiAgICAgICAgwq/Cq8Kuw7HCqSBGVU4KICAgICAgICDCr8Kvwq7DscKhIFRFWFRNQUtFUgogICAgICAgwq/Cq8Kuw7HCqSBET1dOTE9BREVSCiAgICAgICAgwq/Cq8Kuw7HCqSBHSVRIVUIKCiAgICAgICAgPiDwn5SlIFJFR0FSRFMgOiBEQVZFIFRFQ0gg8J+YgAoKICAgICAgYAoKICAgIHRyeSB7CiAgICAgICAgY29uc3QgaW1hZ2VQYXRoID0gcGF0aC5qb2luKF9fZGlybmFtZSwgJy4uL2Fzc2V0cy9ib3RfaW1hZ2UuanBnJyk7CiAgICAgICAgaWYgKGZzLmV4aXN0c1N5bmMoaW1hZ2VQYXRoKSkgewogICAgICAgICAgICBjb25zdCBib3RJbWFnZSA9IGZzLnJlYWRGaWxlU3luYyhtaWFnZVBhdGgpOwogICAgICAgICAgICBhd2FpdCBzb2NrLnNlbmRNZXNzYWdlKG0sIHsKICAgICAgICAgICAgICAgIGltYWdlOiBib3RJbWFnZSwKICAgICAgICAgICAgICAgIGNhcHRpb246IGhlbHBUZXh0LAogICAgICAgICAgICAgICAgY29udGV4dEluZm86IHsKICAgICAgICAgICAgICAgICAgICBmb3J3YXJkaW5nU2NvcmU6IDEsCiAgICAgICAgICAgICAgICAgICAgaXNGb3J3YXJkZWQ6IHRydWUsCiAgICAgICAgICAgICAgICAgICAgZm9yd2FyZGVkTmV3c2xldHRlck1lc3NhZ2VJbmZvOiB7CiAgICAgICAgICAgICAgICAgICAgICAgIG5ld3NsZXR0ZXJKaWQ6ICIxMjAzNjM0MDA0ODAxNzMyODBAbmV3c2xldHRlciIsCiAgICAgICAgICAgICAgICAgICAgICAgIG5ld3NsZXR0ZXJOYW1lOiAiUE9XRVJFRCBCWSBHSUZURUREQVZFIFRFQ0giLAogICAgICAgICAgICAgICAgICAgICAgICBzZXJ2ZXJNZXNzYWdlSWQ6IC0xCiAgICAgICAgICAgICAgICAgICAgfQogICAgICAgICAgICAgICAgfQogICAgICAgICAgICB9LCB7IHF1b3RlZCB9KTsKICAgICAgICB9IGVsc2UgewogICAgICAgICAgICBjb25zb2xlLmVycm9yKCJCb3QgaW1hZ2Ugbm90IGZvdW5kIGF0OiIsIGltYWdlUGF0aCk7CiAgICAgICAgICAgIGF3YWl0IHNvY2suc2VuZE1lc3NhZ2UobSwgewogICAgICAgICAgICAgICAgdGV4dDogaGVscFRleHQsCiAgICAgICAgICAgICAgICBjb250ZXh0SW5mbzogewogICAgICAgICAgICAgICAgICAgIGZvcndhcmRpbmdTY29yZTogMSwKICAgICAgICAgICAgICAgICAgICBpc0ZvcndhcmRlZDogdHJ1ZSwKICAgICAgICAgICAgICAgICAgICBmb3J3YXJkZWROZXdzbGV0dGVyTWVzc2FnZUluZm86IHsKICAgICAgICAgICAgICAgICAgICAgICAgbmV3c2xldHRlckppZDogIjEyMDM2MzQwMDQ4MDE3MzI4MEBuZXdzbGV0dGVyIiwKICAgICAgICAgICAgICAgICAgICAgICAgbmV3c2xldHRlck5hbWU6ICJQT1dFUkVEIEJZIEdJRlRFRERBVkUgVEVDSCIsCiAgICAgICAgICAgICAgICAgICAgICAgIHNlcnZlck1lc3NhZ2VJZDogLTEKICAgICAgICAgICAgICAgICAgICB9CiAgICAgICAgICAgICAgICB9CiAgICAgICAgICAgIH0pOwogICAgICAgIH0KICAgIH0gY2F0Y2goZXJyKSB7CiAgICAgICAgY29uc29sZS5lcnJvcigiRXJyb3IgaW4gaGVscCBjb21tYW5kOiIsIGVycil7CiAgICAgICAgICAgIGF3YWl0IHNvY2suc2VuZE1lc3NhZ2UobSwgeyB0ZXh0OiBoZWxwVGV4dCB9KTsKICAgIH0KfQoKbW9kdWxlLmV4cG9ydHMgPSBoZWxwQ29tbWFuZDsK", "base64").toString();
-eval(decoded);
+const _0x5c3c=['../settings','fs','path','join','__dirname','../assets/bot_image.jpg','existsSync','readFileSync','sendMessage','image','caption','contextInfo','forwardingScore','isForwarded','forwardedNewsletterMessageInfo','newsletterJid','120363400480173280@newsletter','newsletterName','POWERED BY GIFTEDDAVE TECH','serverMessageId','quoted','console','error','Bot image not found at:','text','Error in help command:','module','exports'];(function(_0x1be0bf,_0x5e3b4d){const _0x2e7e8a=function(_0x1c69b8){while(--_0x1c69b8){_0x1be0bf['push'](_0x1be0bf['shift']());}};_0x2e7e8a(++_0x5e3b4d);}(_0x5c3c,0x1d));const _0x4f9e=function(_0x1be0bf,_0x5e3b4d){_0x1be0bf=_0x1be0bf-0x0;let _0x2e7e8a=_0x5c3c[_0x1be0bf];return _0x2e7e8a;};
+
+const settings = require(_0x4f9e(0x0));
+const fs = require(_0x4f9e(0x1));
+const path = require(_0x4f9e(0x2));
+
+async function helpCommand(sock, m, quoted) {
+    const helpText = `
+╭━━━《 𝗗𝗔𝗩𝗘-𝗠𝗗 ⚡》━━━━━┈⊷
+┃❍⁠⁠╭─────────────────────────────
+┃❍⁠⁠│▸  𝗨𝘀𝗲𝗿      : 𝙂𝙞𝙛𝙩𝙚𝙙 𝘿𝙖𝙫𝙚 👑
+┃❍⁠⁠│▸  𝗣𝗹𝗮𝘁𝗳𝗼𝗿𝗺   : 𝙃𝙚𝙧𝙤𝙠𝙪
+┃❍⁠⁠│▸  𝗢𝘄𝗻𝗲𝗿     : +254104260236
+┃❍⁠⁠│▸  𝗣𝗿𝗲𝗳𝗶𝘅     : |.|
+┃❍⁠⁠│▸  𝗖𝗼𝗺𝗺𝗮𝗻𝗱𝘀: 𝟮𝟭𝟰 📜
+┃❍⁠⁠│▸  𝗗𝗲𝘃𝗲𝗹𝗼𝗽𝗲𝗿 : 𝐆𝐈𝐅𝐓𝐄𝐃 𝐃𝐀𝐕𝐄 💻
+┃❍⁠⁠│▸  𝗩𝗲𝗿𝘀𝗶𝗼𝗻   : 𝟮.𝟬.𝟬 🚀
+┃❍⁠⁠╰─────────────────────────────
+╰━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┈⊷
+
+*📖 𝗔𝗩𝗔𝗜𝗟𝗔𝗕𝗟𝗘 𝗖𝗢𝗠𝗠𝗔𝗡𝗗𝗦:*
+
+╭━⟪ 𝗚𝗘𝗡𝗘𝗥𝗔𝗟 ⟫━┈⊷
+┃ • help  
+┃ • .menu  
+┃ • ping  
+┃ • alive  
+┃ • tts  
+┃ • owner  
+┃ • joke  
+┃ • quote  
+┃ • fact  
+┃ • weather  
+┃ • news  
+┃ • attp  
+┃ • lyrics  
+┃ • 8ball  
+┃ • groupinfo  
+┃ • staff  
+┃ • .admins  
+┃ • vv  
+┃ • trt  
+┃ • ss  
+┃ • jid  
+╰━━━━━━━━━━━━━━━┈⊷
+
+╭━⟪ 𝗔𝗗𝗠𝗜𝗡 ⟫━┈⊷
+┃ • ban  
+┃ • kick  
+┃ • promote  
+┃ • demote  
+┃ • mute  
+┃ • unmute  
+┃ • delete  
+┃ • .del  
+┃ • warnings  
+┃ • warn  
+┃ • antilink  
+┃ • antibadword  
+┃ • clear  
+┃ • tag  
+┃ • tagall  
+┃ • chatbot  
+┃ • welcome  
+┃ • goodbye  
+┃ • resetlink  
+╰━━━━━━━━━━━━━━━┈⊷
+
+╭━⟪ 𝗢𝗪𝗡𝗘𝗥 ⟫━┈⊷
+┃ • mode  
+┃ • autostatus  
+┃ • clearsession  
+┃ • cleartmp  
+┃ • setpp  
+┃ • .antidelete  
+┃ • autoreact  
+╰━━━━━━━━━━━━━━━┈⊷
+
+╭━⟪ 𝗜𝗠𝗔𝗚𝗘 / 𝗦𝗧𝗜𝗖𝗞𝗘𝗥 ⟫━┈⊷
+┃ • blur  
+┃ • simage  
+┃ • sticker  
+┃ • tgsticker  
+┃ • meme  
+┃ • take  
+┃ • emojimix  
+╰━━━━━━━━━━━━━━━┈⊷
+
+╭━⟪ 𝗚𝗔𝗠𝗘𝗦 ⟫━┈⊷
+┃ • .tictactoe  
+┃ • .hangman  
+┃ • .guess  
+┃ • .trivia  
+┃ • .answer  
+┃ • .truth  
+┃ • .dare  
+╰━━━━━━━━━━━━━━━┈⊷
+
+╭━⟪ 𝗔𝗜 ⟫━┈⊷
+┃ • .gpt  
+┃ • .gemini  
+┃ • .imagine  
+┃ • .flux  
+╰━━━━━━━━━━━━━━━┈⊷
+
+╭━⟪ 𝗙𝗨𝗡 ⟫━┈⊷
+┃ • .compliment  
+┃ • .insult  
+┃ • .flirt  
+┃ • .shayari  
+┃ • .goodnight  
+┃ • .roseday  
+┃ • .character  
+┃ • .wasted  
+┃ • .ship  
+┃ • .simp  
+┃ • .stupid  
+╰━━━━━━━━━━━━━━━┈⊷
+
+╭━⟪ 𝗧𝗘𝗫𝗧𝗠𝗔𝗞𝗘𝗥 ⟫━┈⊷
+┃ • metallic  
+┃ • ice  
+┃ • snow  
+┃ • impressive  
+┃ • matrix  
+┃ • light  
+┃ • neon  
+┃ • devil  
+┃ • purple  
+┃ • thunder  
+┃ • leaves  
+┃ • 1917  
+┃ • arena  
+┃ • hacker  
+┃ • sand  
+┃ • blackpink  
+┃ • glitch  
+┃ • fire  
+╰━━━━━━━━━━━━━━━┈⊷
+
+╭━⟪ 𝗗𝗢𝗪𝗡𝗟𝗢𝗔𝗗𝗘𝗥 ⟫━┈⊷
+┃ • play  
+┃ • song  
+┃ • instagram  
+┃ • facebook  
+┃ • tiktok  
+┃ • video  
+┃ • ytmp4  
+╰━━━━━━━━━━━━━━━┈⊷
+
+╭━⟪ 𝗚𝗜𝗧𝗛𝗨𝗕 ⟫━┈⊷
+┃ • git  
+┃ • github  
+┃ • sc  
+┃ • script  
+┃ • repo  
+╰━━━━━━━━━━━━━━━┈⊷
+
+> ⚙️ 𝙍𝙀𝙂𝘼𝙍𝘿𝙎 : 𝗗𝗔𝗩𝗘 𝗧𝗘𝗖𝗛 👻
+`;
+
+    try {
+        const imagePath = path[_0x4f9e(0x3)](global[_0x4f9e(0x4)],_0x4f9e(0x5));
+        if (fs[_0x4f9e(0x6)](imagePath)) {
+            const botImage = fs[_0x4f9e(0x7)](imagePath);
+            await sock[_0x4f9e(0x8)](m, {
+                [_0x4f9e(0x9)]: botImage,
+                [_0x4f9e(0xa)]: helpText,
+                [_0x4f9e(0xb)]: {
+                    [_0x4f9e(0xc)]: 1,
+                    [_0x4f9e(0xd)]: true,
+                    [_0x4f9e(0xe)]: {
+                        [_0x4f9e(0xf)]: _0x4f9e(0x10),
+                        [_0x4f9e(0x11)]: _0x4f9e(0x12),
+                        [_0x4f9e(0x13)]: -1,
+                    }
+                }
+            }, { [_0x4f9e(0x14)]: quoted });
+        } else {
+            global[_0x4f9e(0x15)][_0x4f9e(0x16)](_0x4f9e(0x17), imagePath);
+            await sock[_0x4f9e(0x8)](m, {
+                [_0x4f9e(0x18)]: helpText,
+                [_0x4f9e(0xb)]: {
+                    [_0x4f9e(0xc)]: 1,
+                    [_0x4f9e(0xd)]: true,
+                    [_0x4f9e(0xe)]: {
+                        [_0x4f9e(0xf)]: _0x4f9e(0x10),
+                        [_0x4f9e(0x11)]: _0x4f9e(0x12),
+                        [_0x4f9e(0x13)]: -1,
+                    }
+                }
+            });
+        }
+    } catch (err) {
+        global[_0x4f9e(0x15)][_0x4f9e(0x16)](_0x4f9e(0x19), err);
+        await sock[_0x4f9e(0x8)](m, { [_0x4f9e(0x18)]: helpText });
+    }
+}
+
+global[_0x4f9e(0x1a)][_0x4f9e(0x1b)] = helpCommand;
