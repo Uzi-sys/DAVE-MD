@@ -11,9 +11,7 @@ const axios = require('axios');
 const ffmpeg = require('fluent-ffmpeg');
 const { addWelcome, delWelcome, isWelcomeOn, addGoodbye, delGoodBye, isGoodByeOn } = require('./lib/index');
 
-// ========== OBFUSCATED SECTION START ==========
 (function(){
-    // This IIFE wraps half of the imports using obfuscated variable names.
     const _0x1a2d = [
         './commands/tagall',
         './commands/help',
