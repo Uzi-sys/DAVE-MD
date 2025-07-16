@@ -100,7 +100,7 @@ const videoCommand = require('./commands/video');
 global.packname = settings.packname;
 global.author = settings.author;
 global.channelLink = "https://whatsapp.com/channel/0029VbApvFQ2Jl84lhONkc3k";
-global.ytch = "Mr Caseyrhodes tech 👻";
+global.ytch = "Gifted Dave 👻";
 
 // Add this near the top of main.js with other global configurations
 const channelInfo = {
@@ -108,7 +108,7 @@ const channelInfo = {
         forwardingScore: 1,
         isForwarded: true,
         forwardedNewsletterMessageInfo: {
-            newsletterJid: '120363302677217436@newsletter',
+            newsletterJid: '120363400480173280@newsletter',
             newsletterName: 'DAVE-MD',
             serverMessageId: -1
         }
@@ -846,7 +846,7 @@ async function handleGroupParticipantUpdate(sock, update) {
             const data = JSON.parse(fs.readFileSync('./data/userGroupData.json'));
             const welcomeData = data.welcome[id];
             const welcomeMessage = welcomeData?.message || 'Welcome {user} to the group! 🎉';
-            const channelId = welcomeData?.channelId || '120363302677217436@newsletter';
+            const channelId = welcomeData?.channelId || '120363400480173280@newsletter';
 
             // Send welcome message for each new participant
             for (const participant of participants) {
@@ -886,7 +886,7 @@ async function handleGroupParticipantUpdate(sock, update) {
             const data = JSON.parse(fs.readFileSync('./data/userGroupData.json'));
             const goodbyeData = data.goodbye[id];
             const goodbyeMessage = goodbyeData?.message || 'Goodbye {user} 👋';
-            const channelId = goodbyeData?.channelId || '120363302677217436@newsletter';
+            const channelId = goodbyeData?.channelId || '120363400480173280@newsletter';
 
             // Send goodbye message for each leaving participant
             for (const participant of participants) {
