@@ -265,9 +265,9 @@ async function startXeonBotInc() {
             console.log(chalk.yellow(`\n\n                  ${chalk.bold.blue(`[ ${global.botname || 'KNIGHT BOT'} ]`)}\n\n`))
             console.log(chalk.cyan(`< ================================================== >`))
             console.log(chalk.magenta(`\n${global.themeemoji || '•'} YT CHANNEL: MR HACKER`))
-            console.log(chalk.magenta(`${global.themeemoji || '•'} GITHUB: caseyweb`))
+            console.log(chalk.magenta(`${global.themeemoji || '•'} GITHUB: giftedsession`))
             console.log(chalk.magenta(`${global.themeemoji || '•'} WA NUMBER: ${owner}`))
-            console.log(chalk.magenta(`${global.themeemoji || '•'} CREDIT: CASEYRHODES`))
+            console.log(chalk.magenta(`${global.themeemoji || '•'} CREDIT: GIFTEDDAVE`))
             console.log(chalk.green(`${global.themeemoji || '•'} 🤖 Bot Connected Successfully! ✅`))
         }
         if (
