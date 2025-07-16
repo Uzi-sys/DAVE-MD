@@ -213,7 +213,7 @@ async function startXeonBotInc() {
         if (!!global.phoneNumber) {
             phoneNumber = global.phoneNumber
         } else {
-            phoneNumber = await question(chalk.bgBlack(chalk.greenBright(`Please type your WhatsApp number 😍\nFormat: 6281376552730 (without + or spaces) : `)))
+            phoneNumber = await question(chalk.bgBlack(chalk.greenBright(`Please type your WhatsApp number 😍\nFormat: 254104260236 (without + or spaces) : `)))
         }
 
         // Clean the phone number - remove any non-digit characters
@@ -262,7 +262,7 @@ async function startXeonBotInc() {
             });
 
             await delay(1999)
-            console.log(chalk.yellow(`\n\n                  ${chalk.bold.blue(`[ ${global.botname || 'KNIGHT BOT'} ]`)}\n\n`))
+            console.log(chalk.yellow(`\n\n                  ${chalk.bold.blue(`[ ${global.botname || 'DAVE-MD'} ]`)}\n\n`))
             console.log(chalk.cyan(`< ================================================== >`))
             console.log(chalk.magenta(`\n${global.themeemoji || '•'} YT CHANNEL: MR HACKER`))
             console.log(chalk.magenta(`${global.themeemoji || '•'} GITHUB: giftedsession`))
