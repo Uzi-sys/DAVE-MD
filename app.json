@@ -1,7 +1,7 @@
 {
   "name": "DAVE-MD",
   "description": "A WhatsApp Bot Created by ElitePro",
-  "logo": "https://i.ibb.co/jk0ynvbn/7a8c4b5b617fa11a1e9a61190f427546.jpg",
+  "logo": "https://files.catbox.moe/nxzaly.jpg",
   "keywords": ["bot", "whatsapp", "baileys", "javascript", "elitepro"],
   "success_url": "/",
   "stack": "heroku-24",
