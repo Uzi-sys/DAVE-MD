@@ -50,150 +50,201 @@ async function helpCommand(conn, m, quoted, commands = []) {
 │ ─≽ *Totalfeature* : ${totalCommands}
 │ ─≽ *Ram* :${ram()}
 `;
+┏━━「 \`Mode\` 」
+│ ─≽ *private*
+│ ─≽ *public*
+│ ─≽ *recording*
+│ ─≽ *typing*
+│ ─≽ *autoreact*
+┗━━━━━━━━━━━━━━━♢
 
+┏━━「 \`General\` 」
+│ ─≽ *ping*
+│ ─≽ *repo*
+│ ─≽ *bot*
+│ ─≽ *autostatusview*
+│ ─≽ *uptime*
+│ ─≽ *delete*
+│ ─≽ *listplugin*
+│──────♢
+┗━━━━━━━━━━━━━━━♢
 
-╭━━━━━━━━━━━━━━━┈⊷
-┃  *General Commands*:
-║ • help or .menu
-║ • ping
-║ • alive
-║ • tts <text>
-║ • owner
-║ • joke
-║ • quote
-║ • fact
-║ • weather <city>
-║ • news
-║ • attp <text>
-║ • lyrics <song_title>
-║ • 8ball <question>
-║ • groupinfo
-║ • staff or .admins 
-║ • vv
-║ • trt <text> <lang>
-║ • ss <link>
-║ • jid
-╰━━━━━━━━━━━━━━━┈⊷
+┏━━「 \`Download\` 」
+│ ─≽ *song*
+│ ─≽ *play*
+│ ─≽ *play2*
+│ ─≽ *tiktok*
+│ ─≽ *vv*
+│ ─≽ *vv2*
+│ ─≽ *anime*
+│ ─≽ *detiknews*
+│ ─≽ *apk*
+│ ─≽ *apk2*
+│ ─≽ *fb*
+│ ─≽ *igdl2*
+│ ─≽ *igdl*
+│ ─≽ *lyrics*
+│ ─≽ *spotifydown*
+│ ─≽ *spotifysearch*
+│ ─≽ *igstalk*
+│ ─≽ *tiktokstalk*
+│ ─≽ *ytmp4*
+│ ─≽ *ytmp3*
+│ ─≽ *mediafire*
+│ ─≽ *playtiktok*
+│ ─≽ *play3*
+│ ─≽ *song2*
+│──────♢
+┗━━━━━━━━━━━━━━━♢
 
-╭━━━━━━━━━━━━━━━┈⊷
-┃ *Admin Commands*:
-║ • ban @user
-║ • promote @user
-║ • demote @user
-║ • mute <minutes>
-║ • unmute
-║ • delete or .del
-║ • kick @user
-║ • warnings @user
-║ • warn @user
-║ • antilink
-║ • antibadword
-║ • clear
-║ • tag <message>
-║ • tagall
-║ • chatbot
-║ • resetlink
-║ • welcome <on/off>
-║ • goodbye <on/off>
-╰━━━━━━━━━━━━━━━┈⊷
+┏━━「 \`Group\` 」
+│ ─≽ *remove*
+│ ─≽ *tagall*
+│ ─≽ *hidetag*
+│ ─≽ *promote*
+│ ─≽ *demote*
+│ ─≽ *kickall*
+│ ─≽ *kill*
+│ ─≽ *invite*
+│ ─≽ *add*
+│ ─≽ *open*
+│ ─≽ *close*
+│ ─≽ *antilinkgc*
+│ ─≽ *antilink*
+│ ─≽ *getidgc*
+│ ─≽ *ceklinkgc*
+│ ─≽ *gcinfo*
+│ ─≽ *poll*
+│ ─≽ *setppgc*
+│ ─≽ *listonline*
+│ ─≽ *resetlink*
+│ ─≽ *pin*
+│ ─≽ *setnamegc*
+│ ─≽ *request-join*
+│ ─≽ *approve*
+│ ─≽ *reject*
+│ ─≽ *left*
+│──────♢
+┗━━━━━━━━━━━━━━━♢
 
-╭━━━━━━━━━━━━━━━┈⊷
-┃ *Owner Commands*:
-║ • mode
-║ • autostatus
-║ • clearsession
-║ • .antidelete
-║ • cleartmp
-║ • setpp <reply to image>
-║ • autoreact
-╰━━━━━━━━━━━━━━━┈⊷
+┏━━「 \`Sticker\` 」
+│ ─≽ *s*
+│ ─≽ *take*
+│ ─≽ *brat*
+│ ─≽ *emojimix*
+│ ─≽ *notes*
+│──────♢
+┗━━━━━━━━━━━━━━━♢
 
-╭━━━━━━━━━━━━━━━━┈⊷
-┃ *Image/Sticker Commands*:
-║ • blur <image>
-║ • simage <reply to sticker>
-║ • sticker <reply to image>
-║ • tgsticker <Link>
-║ • meme
-║ • take <packname>
-║ • emojimix <emj1>+<emj2>
-╰━━━━━━━━━━━━━━━┈⊷
+┏━━「 \`Owner\` 」
+│ ─≽ *getbio*
+│ ─≽ *getpp*
+│ ─≽ *block*
+│ ─≽ *unblock*
+│ ─≽ *storytext*
+│ ─≽ *storyaudio*
+│ ─≽ *storyimage*
+│ ─≽ *storyvideo*
+│ ─≽ *Creategc*
+│ ─≽ *listgc*
+│ ─≽ *setpp*
+│ ─≽ *onlypc*
+│ ─≽ *onlygc*
+│ ─≽ *reactch*
+│ ─≽ *createch*
+│ ─≽ *clear*
+│──────♢
+┗━━━━━━━━━━━━━━━♢
 
-╭━━━━━━━━━━━━━━━┈⊷
-┃ *Game Commands*:
-║ ➤ .tictactoe @user
-║ ➤ .hangman
-║ ➤ .guess <letter>
-║ ➤ .trivia
-║ ➤ .answer <answer>
-║ ➤ .truth
-║ ➤ .dare
-╰━━━━━━━━━━━━━━━┈⊷
+┏━━「 \`Maths\` 」
+│ ─≽ *kalkulator*
+│──────♢
+┗━━━━━━━━━━━━━━━♢
 
-╭━━━━━━━━━━━━━━━┈⊷
-┃ *AI Commands*:
-║ ➤ .gpt <question>
-║ ➤ .gemini <question>
-║ ➤ .imagine <prompt>
-║ ➤ .flux <prompt>
-╰━━━━━━━━━━━━━━━┈⊷
+┏━━「 \`Search\` 」
+│ ─≽ *ai*
+│ ─≽ *ai2*
+│ ─≽ *country*
+│ ─≽ *quiz*
+│ ─≽ *gpt*
+│ ─≽ *gpt2*
+│ ─≽ *gpt3*
+│ ─≽ *gemma*
+│ ─≽ *yts*
+│ ─≽ *pinterest*
+│ ─≽ *igstory*
+│ ─≽ *ytstalk*
+│ ─≽ *ffstalk*
+│ ─≽ *telestalk*
+│ ─≽ *meme*
+│ ─≽ *channelinfo*
+│ ─≽ *cekkodam*
+│ ─≽ *define*
+│ ─≽ *sfile*
+│ ─≽ *myip*
+│ ─≽ *trackip*
+│ ─≽ *xvideos*
+│ ─≽ *yiffersearch*
+│──────♢
+┗━━━━━━━━━━━━━━━♢
 
-╭━━━━━━━━━━━━━━━━┈⊷
-┃ *Fun Commands*:
-║ ➤ .compliment @user
-║ ➤ .insult @user
-║ ➤ .flirt 
-║ ➤ .shayari
-║ ➤ .goodnight
-║ ➤ .roseday
-║ ➤ .character @user
-║ ➤ .wasted @user
-║ ➤ .ship @user
-║ ➤ .simp @user
-║ ➤ .stupid @user [text]
-╰━━━━━━━━━━━━━━━┈⊷
+┏━━「 \`Converter\` 」
+│ ─≽ *photo*
+│ ─≽ *tovideo*
+│ ─≽ *toaudio*
+│ ─≽ *tovn*
+│ ─≽ *translate*
+│ ─≽ *flux*
+│ ─≽ *deepimage*
+│ ─≽ *tourl*
+│ ─≽ *logo*
+│ ─≽ *tts*
+│ ─≽ *ghiblistyle*
+│──────♢
+┗━━━━━━━━━━━━━━━♢
 
-╭━━━━━━━━━━━━━━━┈⊷
-┃ *Textmaker*:
-║ • metallic <text>
-║ • ice <text>
-║ • snow <text>
-║ • impressive <text>
-║ • matrix <text>
-║ • light <text>
-║ • neon <text>
-║ • devil <text>
-║ • purple <text>
-║ • thunder <text>
-║ • leaves <text>
-║ • 1917 <text>
-║ • arena <text>
-║ • hacker <text>
-║ • sand <text>
-║ • blackpink <text>
-║ • glitch <text>
-║ • fire <text>
-╰━━━━━━━━━━━━━━━┈⊷
+┏━━「 \`Religion\` 」
+│ ─≽ *Quran*
+│ ─≽ *Bible*
+│──────♢
+┗━━━━━━━━━━━━━━━♢
 
-╭━━━━━━━━━━━━━━┈⊷
-┃ *Downloader*:
-║ • play <song_name>
-║ • song <song_name>
-║ • instagram <link>
-║ • facebook <link>
-║ • tiktok <link>
-║ • video <song name>
-║ • ytmp4 <Link>
-╰━━━━━━━━━━━━━━━┈⊷
+┏━━「 \`Developer\` 」
+│ ─≽ *githubstalk*
+│ ─≽ *gitclone*
+│ ─≽ *getfile*
+│ ─≽ *scweb*
+│──────♢
+┗━━━━━━━━━━━━━━━♢
 
-╭━━━━━━━━━━━━━━━┈⊷
-┃ *Github Commands:*
-║ • git
-║ • github
-║ • sc
-║ • script
-║ • repo
-╰━━━━━━━━━━━━━━━┈⊷
+┏━━「 \`Heroku\` 」
+│ ─≽ *getvars*
+│ ─≽ *setvar*
+│ ─≽ *update*
+│──────♢
+┗━━━━━━━━━━━━━━━♢
+
+┏━━「 \`Others\` 」
+│ ─≽ *cc*
+│ ─≽ *ckalender*
+│ ─≽ *epl*
+│ ─≽ *laliga*
+│ ─≽ *bundesliga*
+│ ─≽ *serie-a*
+│ ─≽ *ligue-1*
+│ ─≽ *fixtures*
+│ ─≽ *news*
+│ ─≽ *vcf*
+│ ─≽ *save*
+│ ─≽ *say*
+│──────♢
+┗━━━━━━━━━━━━━━━♢
+
+━━「 \`Email\` 」
+│ ─≽ *sendemail*
+│ ─≽ *tempmail*
+│──────♢
+┗━━⬣ ⌜ \`New version\`⌟
 
 > ʀᴇɢᴀʀᴅs 𝐃𝐀𝐕𝐄 𝗧𝗘𝗖𝗛👻
 `;
