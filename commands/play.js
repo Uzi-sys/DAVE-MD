@@ -57,6 +57,4 @@ async function playCommand(sock, chatId, message) {
     }
 }
 
-module.exports = playCommand; 
-
-/**`*/
+module.exports = playCommand;
