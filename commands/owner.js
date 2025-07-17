@@ -1,103 +1,49 @@
-import config from '../../settings';
-import path from 'path';
-import fs from 'fs';
-import fetch from 'node-fetch';
+const settings = require('../settings');
 
-const ownerContact = async (m, sock) => {
-  const prefix = config.PREFIX;
-  const ownerNumber = config.OWNER_NUMBER;
-  const cmd = m.body?.startsWith(prefix)
-    ? m.body.slice(prefix.length).split(' ')[0].toLowerCase()
-    : '';
-
-  if (cmd !== 'owner') return;
-
-  console.log('📥 Owner command triggered');
-
-  try {
-    const newsletterJid = '120363400480173280@newsletter';
-    const newsletterName = '𝐃𝐀𝐕𝐄-𝐌𝐃';
-
-    // 🔥 Your custom image URL
-    const profilePictureUrl = 'https://files.catbox.moe/7zfdcq.jpg'; // replace this with your real image link
-
-    const captionText = `
-╭───〔 👑 *BOT OWNER* 〕───⬣
-┃ 👤 *Name:* ${config.OWNER_NAME || 'Dave'}
-┃ 📞 *Contact:* wa.me/${ownerNumber}
-┃ 🌐 *GitHub:* github.com/${config.GITHUB || 'DAVE-MD'}
-╰──────────────⬣`.trim();
-
-    await sock.sendMessage(
-      m.from,
-      {
-        image: { url: profilePictureUrl },
-        caption: captionText,
-        contextInfo: {
-          forwardingScore: 999,
-          isForwarded: true,
-          forwardedNewsletterMessageInfo: {
-            newsletterName,
-            newsletterJid,
-          },
-        },
-      },
-      { quoted: m }
-    );
-
-    const vcard = `BEGIN:VCARD
+async function ownerCommand(sock, chatId) {
+    const vcard = `
+BEGIN:VCARD
 VERSION:3.0
-FN:${config.OWNER_NAME || 'Popkid'}
-TEL;type=CELL;type=VOICE;waid=${ownerNumber}:${ownerNumber}
-END:VCARD`;
+FN:${settings.OWNER_NAME}
+TEL;waid=${settings.OWNER_NUMBER}:${settings.OWNER_NUMBER}
+END:VCARD
+`;
 
-    await sock.sendMessage(
-      m.from,
-      {
+    // Send vCard first
+    await sock.sendMessage(chatId, {
         contacts: {
-          displayName: config.OWNER_NAME || 'Popkid',
-          contacts: [{ vcard }],
+            displayName: settings.OWNER_NAME,
+            contacts: [{ vcard }],
         },
-      },
-      { quoted: m }
-    );
-
-    const songPath = path.join('mydata', 'owner-theme.mp3');
-
-    if (fs.existsSync(songPath)) {
-      const audioBuffer = fs.readFileSync(songPath);
-      await sock.sendMessage(
-        m.from,
-        {
-          audio: audioBuffer,
-          mimetype: 'audio/mp4',
-          ptt: false,
-        },
-        { quoted: m }
-      );
-    } else {
-      console.warn('⚠️ Song file not found:', songPath);
-    }
-
-    await sock.sendMessage(m.from, {
-      react: {
-        text: '🎵',
-        key: m.key,
-      },
     });
-  } catch (err) {
-    console.error('❌ Error in owner command:', err);
-    await sock.sendMessage(m.from, {
-      text: '❌ *Could not send owner info. Try again later.*',
-    }, { quoted: m });
 
-    await sock.sendMessage(m.from, {
-      react: {
-        text: '❌',
-        key: m.key,
-      },
+    // Send Channel Info
+    const caption = `✨ *𝐃𝐀𝐕𝐄-𝐌𝐃* Official Channel
+📢 Stay updated with latest features, updates & support.
+
+🔗 *Channel:* https://whatsapp.com/channel/0029VbApvFQ2Jl84lhONkc3k
+👑 *Owner:* ${settings.OWNER_NAME}
+📞 *Contact:* wa.me/${settings.OWNER_NUMBER}
+    `.trim();
+
+    await sock.sendMessage(chatId, {
+        image: { url: "https://files.catbox.moe/vr83h2.jpg" }, // DAVE-XMD branding image
+        caption,
+        footer: "𝐃𝐀𝐕𝐄-𝐌𝐃",
+        buttons: [
+            {
+                buttonId: `https://whatsapp.com/channel/0029VbApvFQ2Jl84lhONkc3k`,
+                buttonText: { displayText: "📢 View Channel" },
+                type: 1,
+            },
+            {
+                buttonId: `menu`,
+                buttonText: { displayText: "🏠 Main Menu" },
+                type: 1,
+            },
+        ],
+        headerType: 4,
     });
-  }
-};
+}
 
-export default ownerContact;
+module.exports = ownerCommand;
