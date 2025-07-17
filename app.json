@@ -1,5 +1,5 @@
 {
-  "name": "ELITE-PRO-V1",
+  "name": "DAVE-MD",
   "description": "A WhatsApp Bot Created by ElitePro",
   "logo": "https://i.ibb.co/jk0ynvbn/7a8c4b5b617fa11a1e9a61190f427546.jpg",
   "keywords": ["bot", "whatsapp", "baileys", "javascript", "elitepro"],
@@ -16,15 +16,15 @@
     },
     "OWNER_NUMBER": {
       "description": "Owner's phone number in international format (without +).",
-      "value": "2348109263390"
+      "value": "254104260236"
     },
     "OWNER_NAME": {
       "description": "Owner's display name.",
-      "value": "ElitePro"
+      "value":"Dave"
     },
     "BOT_NAME": {
       "description": "Bot display name.",
-      "value": "ELITE-PRO-V1"
+      "value": "DAVE-MD"
     },
     "AUTO_RECORDING": {
       "description": "Enable auto-recording simulation (true or false).",
