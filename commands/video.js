@@ -52,7 +52,7 @@ async function videoCommand(sock, chatId, message) {
             await sock.sendMessage(chatId, {
                 video: { url: tempFile },
                 mimetype: 'video/mp4',
-                caption: `*${title}*\n\n> *_Downloaded by 𝐃𝐀𝐕𝐄-𝐗𝐌𝐃_*`
+                caption: `*${title}*\n\n> *_Downloaded by 𝐃𝐀𝐕𝐄-𝐌𝐃_*`
             }, { quoted: message });
 
             setTimeout(() => {
