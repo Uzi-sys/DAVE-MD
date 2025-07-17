@@ -1,48 +1,81 @@
-const { ttdl } = require("ruhend-scraper");
-const axios = require('axios');
 
-let handler = async (m, { q, conn }) => {
-  if (!q) return m.reply('📌 Provide a search query!\n\nExample: *.playtiktok haikyuu edit*');
+import config from '../../settings.js';
+import axios from 'axios';
 
-  try {
-    const res = await axios.get(`https://apizell.web.id/download/tiktokplay?q=${encodeURIComponent(q)}`);
-    const json = res.data;
-
-    if (!json.status || !json.data || json.data.length === 0) {
-      return m.reply('❌ No results found.');
-    }
-
-    const vid = json.data[0];
-    const caption = `*🎬 Title:* ${vid.title}
-*👤 Author:* ${vid.author}
-*👁️ Views:* ${Number(vid.views || 0).toLocaleString()}
-*📝 Description:* ${vid.desc || '-'}
-`;
-
-    await conn.sendMessage(m.chat, {
-      video: { url: vid.url },
-      caption,
-      contextInfo: {
-        externalAdReply: {
-          showAdAttribution: true,
-          title: vid.title,
-          body: `By ${vid.author} • ${Number(vid.views || 0).toLocaleString()} views`,
-          mediaType: 1,
-          thumbnailUrl: vid.thumbnail || 'https://i.ibb.co/8rJ9wXJ/default.jpg',
-          mediaUrl: vid.url,
-          sourceUrl: vid.url
-        }
+const tiktokdl = async (m, sock) => {
+  const prefix = config.PREFIX;
+  const cmd = m.body.startsWith(prefix) ? m.body.slice(prefix.length).split(' ')[0].toLowerCase() : '';
+  const q = m.body.split(' ').slice(1).join(' ');
+  
+  const reply = (text) => sock.sendMessage(m.from, {
+    text,
+    contextInfo: {
+      forwardingScore: 5,
+      isForwarded: true,
+      forwardedNewsletterMessageInfo: {
+        newsletterName: "⚡ DAVE-MD Updates",
+        newsletterJid: "120363400480173280@newsletter"
       }
-    }, { quoted: m });
+    }
+  }, { quoted: m });
 
-  } catch (e) {
-    console.error('❌ TikTok Error:', e);
-    m.reply('❌ Failed to get TikTok video. Try again later.');
+  if (cmd === "tiktokdl" || cmd === "tiktok") {
+    if (!q) return reply(
+      `🚫 *Missing TikTok Link!*\n\n` +
+      `📌 Usage:\n` +
+      `\`\`\`${prefix}${cmd} https://vm.tiktok.com/xxxx/\`\`\`\n\n` +
+      `⚡ Powered by 𝐃𝐀𝐕𝐄-𝐌𝐃`
+    );
+
+    if (!q.includes("tiktok.com")) return reply("❗ *Invalid URL Detected!*\nPlease provide a valid TikTok link.");
+
+    await reply("⏳ *Connecting to TikTok Servers...*\n📡 Fetching your video, please hold...");
+
+    try {
+      const apiUrl = `https://delirius-apiofc.vercel.app/download/tiktok?url=${q}`;
+      const { data } = await axios.get(apiUrl);
+
+      if (!data.status || !data.data) return reply("💥 *Failed to download video!*\nTikTok link might be broken or server is offline.");
+
+      const { title, like, comment, share, author, meta } = data.data;
+      const videoUrl = meta.media.find(v => v.type === "video")?.org;
+      const views = meta?.play_count || 'N/A';
+
+      if (!videoUrl) return reply("🚫 *No video URL found!*\nSomething went wrong retrieving media.");
+
+      const caption =
+        `┏━━━━━━━━━━━━━━━┓\n` +
+        `   ⚡ *TikTok Video Found!* ⚡\n` +
+        `┗━━━━━━━━━━━━━━━┛\n\n` +
+        `👤 *Creator:* ${author.nickname} (@${author.username})\n` +
+        `📝 *Title:* ${title || 'Untitled'}\n` +
+        `👀 *Views:* ${views}\n` +
+        `❤️ *Likes:* ${like}\n` +
+        `💬 *Comments:* ${comment}\n` +
+        `🔁 *Shares:* ${share}\n\n` +
+        `🔗 *Link:* ${q}\n` +
+        `\n━━━━━━━━━━━━━━━━━━\n` +
+        `🧠 𝗣𝗼𝘄𝗲𝗿𝗲𝗱 𝗯𝘆 *𝐃𝐀𝐕𝐄-𝐌𝐃*`;
+
+      await sock.sendMessage(m.from, {
+        video: { url: videoUrl },
+        caption: caption,
+        contextInfo: {
+          forwardingScore: 999,
+          isForwarded: true,
+          mentionedJid: [m.sender],
+          forwardedNewsletterMessageInfo: {
+            newsletterName: "🔥 𝐃𝐀𝐕𝐄-𝐌𝐃 𝐔𝐩𝐝𝐚𝐭𝐞𝐬",
+            newsletterJid: "120363400480173280@newsletter"
+          }
+        }
+      }, { quoted: m });
+
+    } catch (e) {
+      console.error("🔥 TikTok Download Error:", e);
+      return reply(`❌ *Internal Error!*\n\`\`\`${e.message}\`\`\``);
+    }
   }
 };
 
-handler.help = ['playtiktok'];
-handler.tags = ['tiktok'];
-handler.command = ['playtiktok'];
-
-module.exports = handler;
+export default tiktokdl;
