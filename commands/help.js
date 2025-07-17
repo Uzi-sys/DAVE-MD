@@ -37,7 +37,7 @@ function runtime(seconds) {
 
 async function helpCommand(conn, m, quoted, commands = []) {
   const uptime = formatUptime(Date.now() - startTime);
-  const pushname = m.pushName || 'User';
+  const pushname = m.pushName || 'undefined';
   const totalCommands = commands.length || 214;
 
   const menuCaption = `
@@ -49,7 +49,7 @@ async function helpCommand(conn, m, quoted, commands = []) {
 │ ─≽ *Runtime* : ${runtime(process.uptime())}
 │ ─≽ *Totalfeature* : ${totalCommands}
 │ ─≽ *Ram* :${ram()}
-`;
+
 ┏━━「 \`Mode\` 」
 │ ─≽ *private*
 │ ─≽ *public*
