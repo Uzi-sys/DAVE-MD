@@ -20,31 +20,37 @@ function formatUptime(ms) {
   return `${days}d ${hours}h ${minutes}m ${seconds}s`;
 }
 
+function ram() {
+  const totalMem = os.totalmem() / (1024 * 1024 * 1024);
+  const freeMem = os.freemem() / (1024 * 1024 * 1024);
+  return `${freeMem.toFixed(2)} GB / ${totalMem.toFixed(2)} GB`;
+}
+
+function runtime(seconds) {
+  seconds = Number(seconds);
+  const d = Math.floor(seconds / (3600 * 24));
+  const h = Math.floor((seconds % (3600 * 24)) / 3600);
+  const m = Math.floor((seconds % 3600) / 60);
+  const s = Math.floor(seconds % 60);
+  return `${d}d ${h}h ${m}m ${s}s`;
+}
+
 async function helpCommand(conn, m, quoted, commands = []) {
   const uptime = formatUptime(Date.now() - startTime);
-  const userName = m.pushName || 'User';
-  const nodeVersion = process.version;
-  const platform = os.platform();
+  const pushname = m.pushName || 'User';
   const totalCommands = commands.length || 214;
-  const ownerNumber = settings.owner?.[0] || 'AUTOMATED';
-  const devName = settings.developerName || 'FROM SETTINGS';
 
   const menuCaption = `
-━━━《 *𝐃𝐀𝐕𝐄-𝐌𝐃 ᴍᴇɴᴜ* 》━━━━━┈⊷
-┃❍⁠⁠╭──────────────
-┃❍⁠⁠│▸ *User* : ${userName}
-┃❍⁠⁠│▸ *ʙᴀɪʟᴇʏs* : Multi Device
-┃❍⁠⁠│▸ *Type* : ${nodeVersion}
-┃❍⁠⁠│▸ *Platform* : ${platform}
-┃❍⁠⁠│▸ *Owner Number* : ${ownerNumber}
-┃❍⁠⁠│▸ *Uptime* : ${uptime}
-┃❍⁠⁠│▸ *Mode* : . 
-┃❍⁠⁠│▸ *Commands* : ${totalCommands}
-┃❍⁠⁠│▸ *Developer* : ${devName}
-┃❍⁠⁠│▸ *Version* : ${pkg.version}
-┃❍⁠⁠╰──────────────
-╰━━━━━━━━━━━━━━━━━━━┈⊷
-*𝐀𝐯𝐚𝐢𝐥𝐥𝐚𝐛𝐥𝐞 𝐂𝐨𝐦𝐦𝐚𝐧𝐝𝐬:*
+━━┏━━⬣ ⌜\`𝐃𝐀𝐕𝐄-𝐗𝐌𝐃\`⌟
+│ ─≽ *Creator*: *𝐃𝐚𝐯𝐞*
+│ ─≽ *Bot Name* :${global.botname}
+│ ─≽ *Name* : ${pushname}
+│ ─≽ *Version* :*1.0.0*
+│ ─≽ *Runtime* : ${runtime(process.uptime())}
+│ ─≽ *Totalfeature* : ${totalCommands}
+│ ─≽ *Ram* :${ram()}
+`;
+
 
 ╭━━━━━━━━━━━━━━━┈⊷
 ┃  *General Commands*:
