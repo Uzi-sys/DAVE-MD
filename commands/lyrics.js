@@ -19,7 +19,7 @@ const Lyrics = async (m, Matrix) => {
     isForwarded: true,
     forwardedNewsletterMessageInfo: {
       newsletterJid: "120363400480173280@newsletter",
-      newsletterName: "DAVE-MD"
+      newsletterName: "𝐃𝐀𝐕𝐄-𝐌𝐃 𝐔𝐩𝐝𝐚𝐭𝐞𝐬"
     }
   };
 
@@ -93,7 +93,7 @@ const Lyrics = async (m, Matrix) => {
           text: lyrics || 'No lyrics found for this song. 😔'
         }),
         footer: proto.Message.InteractiveMessage.Footer.create({
-          text: `🎵 Powered by 👑DAVE-MD🔥`
+          text: `🎵 Powered by 👑𝐃𝐀𝐕𝐄-𝐌𝐃🔥`
         }),
         nativeFlowMessage: proto.Message.InteractiveMessage.NativeFlowMessage.create({
           buttons
