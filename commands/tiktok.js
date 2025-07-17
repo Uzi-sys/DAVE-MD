@@ -1,5 +1,5 @@
 
-import config from '../../settings.js';
+import setting from '../../settings.js';
 import axios from 'axios';
 
 const tiktokdl = async (m, sock) => {
