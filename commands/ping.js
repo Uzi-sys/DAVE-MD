@@ -29,7 +29,7 @@ async function pingCommand(sock, chatId) {
         const freeMem = (os.freemem() / 1024 / 1024).toFixed(0);
         const usedMem = totalMem - freeMem;
 
-        const systemInfo = `*𝗕𝗼𝘁:* 𝐃𝐀𝐕𝐄-𝐗𝐌𝐃\n` +
+        const systemInfo = `*𝗕𝗼𝘁:* 𝐃𝐀𝐕𝐄-𝐌𝐃\n` +
                            `*𝗣𝗼𝗻𝗴:* ${ping} ms\n` +
                            `*𝗨𝗽𝘁𝗶𝗺𝗲:* ${uptime}\n` +
                            `*𝗣𝗹𝗮𝘁𝗳𝗼𝗿𝗺:* ${os.platform()} ${os.arch()}\n` +
