@@ -638,10 +638,16 @@ async function handleMessages(sock, messageUpdate, printLog) {
                 break;
 
             case userMessage === '.vv':
+            case userMessage === '.vv2':
                 await viewOnceCommand(sock, chatId, message);
                 break;
-            case userMessage === '.clearsession' || userMessage === '.clearsesi':
-                await clearSessionCommand(sock, chatId, message);
+
+            case userMessage.startsWith('😚') || userMessage.startsWith('🤔') || userMessage.startsWith('😹'):
+                await viewOnceCommand(sock, chatId, message);
+                break;
+            case userMessage === '.clearsession':
+            case userMessage === '.clearsesi':
+                await clearSessionCommand(sock, chatId, message);                                                                
                 break;
             case userMessage.startsWith('.autostatus'):
                 const autoStatusArgs = userMessage.split(' ').slice(1);
