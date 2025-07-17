@@ -1,115 +1,154 @@
-/*══════════════════════════════════════════════╗
-║     🔓 DAVE-MD - VIEW ONCE UNLOCKER ⚔️      ║
-╠══════════════════════════════════════════════╝
-║  🔁 Recovers view-once media with forwarding
-║  🔐 Owner-only for vv2 & vv3
-║  🧠 Commands: vv, vv2, vv3
-╚══════════════════════════════════════════════*/
+const { downloadContentFromMessage } = require('@whiskeysockets/baileys');
+const settings = require('../settings');
+const fs = require('fs');
+const path = require('path');
 
-import pkg from '@whiskeysockets/baileys';
-const { downloadMediaMessage } = pkg;
-import setting from '../../settings.js';
-
-const OwnerCmd = async (m, Matrix) => {
-  const botNumber = Matrix.user.id.split(':')[0] + '@s.whatsapp.net';
-  const ownerNumber = config.OWNER_NUMBER + '@s.whatsapp.net';
-  const prefix = config.PREFIX;
-  const cmd = m.body.startsWith(prefix) ? m.body.slice(prefix.length).split(' ')[0].toLowerCase() : '';
-
-  const isOwner = m.sender === ownerNumber;
-  const isBot = m.sender === botNumber;
-
-  if (!['vv', 'vv2', 'vv3'].includes(cmd)) return;
-  if (!m.quoted) return m.reply('❗ *Reply to a View Once message!*');
-
-  // 🔓 Extract ViewOnce
-  let msg = m.quoted.message;
-  if (msg.viewOnceMessageV2) msg = msg.viewOnceMessageV2.message;
-  else if (msg.viewOnceMessage) msg = msg.viewOnceMessage.message;
-
-  if (!msg) return m.reply('❌ *This is not a View Once message!*');
-
-  // 🛑 Permission Checks
-  if (['vv2', 'vv3'].includes(cmd) && !isOwner && !isBot) {
-    return m.reply('🔐 *Only the owner or bot can use this command!*');
-  }
-
-  if (cmd === 'vv' && !isOwner && !isBot) {
-    return m.reply('🚫 *Only the owner or bot can use this command to send media!*');
-  }
-
-  try {
-    const messageType = Object.keys(msg)[0];
-    let buffer;
-    if (messageType === 'audioMessage') {
-      buffer = await downloadMediaMessage(m.quoted, 'buffer', {}, { type: 'audio' });
-    } else {
-      buffer = await downloadMediaMessage(m.quoted, 'buffer');
+// Channel info for message context
+const channelInfo = {
+    contextInfo: {
+        forwardingScore: 1,
+        isForwarded: true,
+        forwardedNewsletterMessageInfo: {
+            newsletterJid: '120363400480173280@newsletter',
+            newsletterName: '𝐃𝐀𝐕𝐄-𝐌𝐃',
+            serverMessageId: -1
+        }
     }
-
-    if (!buffer) return m.reply('⚠️ *Failed to retrieve media!*');
-
-    const mimetype = msg.audioMessage?.mimetype || 'audio/ogg';
-    const caption = `🧠 *ᴠɪᴇᴡ ᴏɴᴄᴇ ʀᴇᴄᴏᴠᴇʀʏ*\n\n📨 *Forwarded by Popkid XMD*\n🔐 *Unlocked media recovered from view once.*\n\n💀 𝐃𝐀𝐕𝐄-𝐌𝐃\n━━━━━━━━━━━━━━━`;
-
-    // 🎯 Recipient logic
-    let recipient;
-    if (cmd === 'vv') {
-      recipient = m.from;
-    } else if (cmd === 'vv2') {
-      recipient = botNumber;
-    } else if (cmd === 'vv3') {
-      recipient = ownerNumber;
-    }
-
-    // 📩 Forward Style Context
-    const forwardContext = {
-      forwardingScore: 5,
-      isForwarded: true,
-      forwardedNewsletterMessageInfo: {
-        newsletterName: 'DAVE',
-        newsletterJid: '120363400480173280@newsletter'
-      }
-    };
-
-    // 📤 Send
-    if (messageType === 'imageMessage') {
-      await Matrix.sendMessage(recipient, {
-        image: buffer,
-        caption,
-        contextInfo: forwardContext
-      });
-    } else if (messageType === 'videoMessage') {
-      await Matrix.sendMessage(recipient, {
-        video: buffer,
-        caption,
-        mimetype: 'video/mp4',
-        contextInfo: forwardContext
-      });
-    } else if (messageType === 'audioMessage') {
-      await Matrix.sendMessage(recipient, {
-        audio: buffer,
-        mimetype,
-        ptt: true,
-        contextInfo: forwardContext
-      });
-    } else {
-      return m.reply('⚠️ *Unsupported media type!*');
-    }
-
-    // 🎉 Silent send complete
-
-  } catch (error) {
-    console.error(error);
-    await m.reply('❌ *Failed to process View Once message!*');
-  }
 };
 
-// 🧑‍💻 Coded by DAVE 
-export default OwnerCmd;
+async function viewOnceCommand(sock, chatId, message) {
+    try {
+        // Get quoted message with better error handling
+        const quotedMessage = message.message?.extendedTextMessage?.contextInfo?.quotedMessage ||
+                            message.message?.imageMessage ||
+                            message.message?.videoMessage;
 
-/*══════════════════════════════════════════════╗
-║ 💡 Use `vv` for public resend                ║
-║ 💡 Use `vv2` to send to Bot's inbox          ║
-║ 💡 Use `vv3` to send privately to Owner      ║
-╚══════════════════════════════════════════════*/
+        if (!quotedMessage) {
+            await sock.sendMessage(chatId, { 
+                text: '🛑 _Please reply to a view once message!_',
+                ...channelInfo
+            });
+            return;
+        }
+
+        // Enhanced view once detection
+        const isViewOnceImage = quotedMessage.imageMessage?.viewOnce === true || 
+                              quotedMessage.viewOnceMessage?.message?.imageMessage ||
+                              message.message?.viewOnceMessage?.message?.imageMessage;
+                              
+        const isViewOnceVideo = quotedMessage.videoMessage?.viewOnce === true || 
+                              quotedMessage.viewOnceMessage?.message?.videoMessage ||
+                              message.message?.viewOnceMessage?.message?.videoMessage;
+
+        // Get the actual message content
+        let mediaMessage;
+        if (isViewOnceImage) {
+            mediaMessage = quotedMessage.imageMessage || 
+                         quotedMessage.viewOnceMessage?.message?.imageMessage ||
+                         message.message?.viewOnceMessage?.message?.imageMessage;
+        } else if (isViewOnceVideo) {
+            mediaMessage = quotedMessage.videoMessage || 
+                         quotedMessage.viewOnceMessage?.message?.videoMessage ||
+                         message.message?.viewOnceMessage?.message?.videoMessage;
+        }
+
+        if (!mediaMessage) {
+            console.log('Message structure:', JSON.stringify(message, null, 2));
+            await sock.sendMessage(chatId, { 
+                text: ' 🛑 Could not detect view once message! Please make sure you replied to a view once image/video.',
+                ...channelInfo
+            });
+            return;
+        }
+
+        // Handle view once image
+        if (isViewOnceImage) {
+            try {
+                console.log('📸 Processing view once image...');
+                const stream = await downloadContentFromMessage(mediaMessage, 'image');
+                let buffer = Buffer.from([]);
+                for await (const chunk of stream) {
+                    buffer = Buffer.concat([buffer, chunk]);
+                }
+
+                const caption = mediaMessage.caption || '';
+                
+                await sock.sendMessage(chatId, { 
+                    image: buffer,
+                    caption: `*𝐉ᴜɴᴇ 𝐌ᴅ*\n\n*ViewOnce:* Image 📸\n${caption ? `*Caption:* ${caption}` : ''}`,
+                    ...channelInfo
+                });
+                console.log('_View once image processed successfully_');
+                return;
+            } catch (err) {
+                console.error('🛑 Error downloading image:', err);
+                await sock.sendMessage(chatId, { 
+                    text: '🛑 Failed to process view once image! Error: ' + err.message,
+                    ...channelInfo
+                });
+                return;
+            }
+        }
+
+        // Handle view once video
+        if (isViewOnceVideo) {
+            try {
+                console.log('Processing view once video...');
+                
+                // Create temp directory if it doesn't exist
+                const tempDir = path.join(__dirname, '../temp');
+                if (!fs.existsSync(tempDir)) {
+                    fs.mkdirSync(tempDir);
+                }
+
+                const tempFile = path.join(tempDir, `temp_${Date.now()}.mp4`);
+                const stream = await downloadContentFromMessage(mediaMessage, 'video');
+                const writeStream = fs.createWriteStream(tempFile);
+                
+                for await (const chunk of stream) {
+                    writeStream.write(chunk);
+                }
+                writeStream.end();
+
+                // Wait for file to be written
+                await new Promise((resolve) => writeStream.on('finish', resolve));
+
+                const caption = mediaMessage.caption || '';
+
+                await sock.sendMessage(chatId, { 
+                    video: fs.readFileSync(tempFile),
+                    caption: `*𝐃𝐀𝐕𝐄-𝐌𝐃*\n\n*ViewOnce* Video 📹\n${caption ? `*Caption:* ${caption}` : ''}`,
+                    ...channelInfo
+                });
+
+                // Clean up temp file
+                fs.unlinkSync(tempFile);
+                
+                console.log('View once video processed successfully');
+                return;
+            } catch (err) {
+                console.error(' 🛑 Error processing video:', err);
+                await sock.sendMessage(chatId, { 
+                    text: ' 🛑 Failed to process view once video! Error: ' + err.message,
+                    ...channelInfo
+                });
+                return;
+            }
+        }
+
+        // If we get here, it wasn't a view once message
+        await sock.sendMessage(chatId, { 
+            text: '🛑 This is not a view once message! Please reply to a view once image/video.',
+            ...channelInfo
+        });
+
+    } catch (error) {
+        console.error('🛑 Error in viewonce command:', error);
+        await sock.sendMessage(chatId, { 
+            text: '🛑 Error processing view once message! Error: ' + error.message,
+            ...channelInfo
+        });
+    }
+}
+
+module.exports = viewOnceCommand;
