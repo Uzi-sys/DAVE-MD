@@ -1,105 +1,107 @@
-const axios = require('axios');
-const fs = require('fs');
-const path = require('path');
+import pkg, { prepareWAMessageMedia } from '@whiskeysockets/baileys';
+const { generateWAMessageFromContent, proto } = pkg;
+import getFBInfo from '@xaviabot/fb-downloader';
+import setting from '../../settings.js';
 
-async function facebookCommand(sock, chatId, message) {
+const fbSessionMap = new Map(); // userId -> session
+
+const facebookCommand = async (m, Matrix) => {
+  const prefix = config.PREFIX;
+  const cmd = m.body.startsWith(prefix) ? m.body.slice(prefix.length).split(' ')[0].toLowerCase() : '';
+  const text = m.body.slice(prefix.length + cmd.length).trim();
+  const userId = m.sender;
+
+  if (['facebook', 'fb', 'fbdl'].includes(cmd)) {
+    if (!text) return m.reply('❌ *Please provide a valid Facebook video URL.*');
+
     try {
-        const text = message.message?.conversation || message.message?.extendedTextMessage?.text;
-        const url = text.split(' ').slice(1).join(' ').trim();
-        
-        if (!url) {
-            return await sock.sendMessage(chatId, { 
-                text: "Please provide a Facebook video URL.\nExample: .fb https://www.facebook.com/..."
-            });
-        }
+      await m.React("🔍");
 
-        // Validate Facebook URL
-        if (!url.includes('facebook.com')) {
-            return await sock.sendMessage(chatId, { 
-                text: "That is not a Facebook link."
-            });
-        }
+      const fbData = await getFBInfo(text);
+      if (!fbData) {
+        await m.reply('❌ *No downloadable video found.*');
+        await m.React("❌");
+        return;
+      }
 
-        // Send loading reaction
-        await sock.sendMessage(chatId, {
-            react: { text: '🔄', key: message.key }
-        });
+      const qualityList = [];
+      if (fbData.sd) qualityList.push({ resolution: 'SD', url: fbData.sd });
+      if (fbData.hd) qualityList.push({ resolution: 'HD', url: fbData.hd });
 
-        // Fetch video data from API
-        const response = await axios.get(`https://api.dreaded.site/api/facebook?url=${url}`);
-        const data = response.data;
+      if (qualityList.length === 0) {
+        await m.reply('⚠️ *No SD or HD quality available for this video.*');
+        return;
+      }
 
-        if (!data || data.status !== 200 || !data.facebook || !data.facebook.sdVideo) {
-            return await sock.sendMessage(chatId, { 
-                text: "Sorry the API didn't respond correctly. Please try Again later!"
-            });
-        }
+      // Save session for this user
+      fbSessionMap.set(userId, { fbData, qualityList });
 
-        const fbvid = data.facebook.sdVideo;
+      let menu = `
+╭━━〔 *📥 𝐃𝐀𝐕𝐄-𝐌𝐃  FACEBOOK DOWNLOADER* 〕━━⬣
+┃ 📝 *Title:* ${fbData.title}
+┃ 🌐 *Source:* Facebook
+┃ 📊 *Qualities:* ${qualityList.length}
+┃
+┃ 💠 *Choose a download option below:*
+┃
+${qualityList.map((q, i) => `┃ ${i + 1}. ${q.resolution} Quality`).join('\n')}
+┃
+┃ ✏️ *Reply with the number (1-${qualityList.length})*
+╰━━━━━━━━━━━━━━━━━━━━⬣
+`;
 
-        if (!fbvid) {
-            return await sock.sendMessage(chatId, { 
-                text: "Wrong Facebook data. Please ensure the video exists."
-            });
-        }
+      await Matrix.sendMessage(m.from, {
+        image: { url: fbData.thumbnail },
+        caption: menu.trim()
+      }, { quoted: m });
 
-        // Create temp directory if it doesn't exist
-        const tmpDir = path.join(process.cwd(), 'tmp');
-        if (!fs.existsSync(tmpDir)) {
-            fs.mkdirSync(tmpDir, { recursive: true });
-        }
-
-        // Generate temp file path
-        const tempFile = path.join(tmpDir, `fb_${Date.now()}.mp4`);
-
-        // Download the video
-        const videoResponse = await axios({
-            method: 'GET',
-            url: fbvid,
-            responseType: 'stream',
-            headers: {
-                'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36',
-                'Accept': 'video/mp4,video/*;q=0.9,*/*;q=0.8',
-                'Accept-Language': 'en-US,en;q=0.5',
-                'Range': 'bytes=0-',
-                'Connection': 'keep-alive',
-                'Referer': 'https://www.facebook.com/'
-            }
-        });
-
-        const writer = fs.createWriteStream(tempFile);
-        videoResponse.data.pipe(writer);
-
-        await new Promise((resolve, reject) => {
-            writer.on('finish', resolve);
-            writer.on('error', reject);
-        });
-
-        // Check if file was downloaded successfully
-        if (!fs.existsSync(tempFile) || fs.statSync(tempFile).size === 0) {
-            throw new Error('Failed to download video');
-        }
-
-        // Send the video
-        await sock.sendMessage(chatId, {
-            video: { url: tempFile },
-            mimetype: "video/mp4",
-            caption: "𝗗𝗢𝗪𝗡𝗟𝗢𝗔𝗗𝗘𝗗 𝗕𝗬 𝐃𝐀𝐕𝐄-𝐌𝐃"
-        }, { quoted: message });
-
-        // Clean up temp file
-        try {
-            fs.unlinkSync(tempFile);
-        } catch (err) {
-            console.error('Error cleaning up temp file:', err);
-        }
-
+      await m.React("✅");
     } catch (error) {
-        console.error('Error in Facebook command:', error);
-        await sock.sendMessage(chatId, { 
-            text: "An error occurred. API might be down. Error: " + error.message
-        });
+      console.error("Facebook command error:", error);
+      await m.reply('❌ *Error processing your request.*');
+      await m.React("❌");
     }
-}
 
-module.exports = facebookCommand; 
+  } else if (!isNaN(m.body.trim()) && fbSessionMap.has(userId)) {
+    const userChoice = parseInt(m.body.trim());
+    const { qualityList } = fbSessionMap.get(userId);
+
+    if (userChoice >= 1 && userChoice <= qualityList.length) {
+      try {
+        await m.React("⬇️");
+
+        const selected = qualityList[userChoice - 1];
+        const buffer = await getStreamBuffer(selected.url);
+        const sizeMB = buffer.length / (1024 * 1024);
+
+        if (sizeMB > 300) {
+          await m.reply("🚫 *The video exceeds 300MB and cannot be sent.*");
+        } else {
+          await Matrix.sendMessage(m.from, {
+            video: buffer,
+            mimetype: 'video/mp4',
+            caption: `✅ *Download Complete: ${selected.resolution}*\n\n🎥 *𝐃𝐀𝐕𝐄-𝐌𝐃 BOT*`
+          }, { quoted: m });
+        }
+
+        fbSessionMap.delete(userId); // Clear session after download
+        await m.React("✅");
+
+      } catch (error) {
+        console.error("Send error:", error);
+        await m.reply('❌ *Failed to download or send video.*');
+        await m.React("❌");
+      }
+    } else {
+      await m.reply("❌ *Invalid option. Please select from the original list.*");
+    }
+  }
+};
+
+const getStreamBuffer = async (url) => {
+  const response = await fetch(url);
+  const buffer = await response.arrayBuffer();
+  return Buffer.from(buffer);
+};
+
+export default facebookCommand;
