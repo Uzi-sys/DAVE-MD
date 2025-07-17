@@ -8,7 +8,7 @@
 
 import pkg from '@whiskeysockets/baileys';
 const { downloadMediaMessage } = pkg;
-import config from '../../settings.js';
+import setting from '../../settings.js';
 
 const OwnerCmd = async (m, Matrix) => {
   const botNumber = Matrix.user.id.split(':')[0] + '@s.whatsapp.net';
