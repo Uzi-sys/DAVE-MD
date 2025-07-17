@@ -1,7 +1,7 @@
 import axios from 'axios';
 import pkg, { prepareWAMessageMedia } from '@whiskeysockets/baileys';
 const { generateWAMessageFromContent, proto } = pkg;
-import setting from '../../setting.js';
+import setting from '../../settings.js';
 
 const Lyrics = async (m, Matrix) => {
   const prefix = config.PREFIX;
