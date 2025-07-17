@@ -1,81 +1,81 @@
+const { ttdl } = require("ruhend-scraper");
+const axios = require('axios');
 
-import setting from '../../settings.js';
-import axios from 'axios';
+const processedMessages = new Set();
 
-const tiktokdl = async (m, sock) => {
-  const prefix = config.PREFIX;
-  const cmd = m.body.startsWith(prefix) ? m.body.slice(prefix.length).split(' ')[0].toLowerCase() : '';
-  const q = m.body.split(' ').slice(1).join(' ');
-  
-  const reply = (text) => sock.sendMessage(m.from, {
-    text,
-    contextInfo: {
-      forwardingScore: 5,
-      isForwarded: true,
-      forwardedNewsletterMessageInfo: {
-        newsletterName: "⚡ DAVE-MD Updates",
-        newsletterJid: "120363400480173280@newsletter"
-      }
-    }
-  }, { quoted: m });
-
-  if (cmd === "tiktokdl" || cmd === "tiktok") {
-    if (!q) return reply(
-      `🚫 *Missing TikTok Link!*\n\n` +
-      `📌 Usage:\n` +
-      `\`\`\`${prefix}${cmd} https://vm.tiktok.com/xxxx/\`\`\`\n\n` +
-      `⚡ Powered by 𝐃𝐀𝐕𝐄-𝐌𝐃`
-    );
-
-    if (!q.includes("tiktok.com")) return reply("❗ *Invalid URL Detected!*\nPlease provide a valid TikTok link.");
-
-    await reply("⏳ *Connecting to TikTok Servers...*\n📡 Fetching your video, please hold...");
-
+async function tiktokCommand(sock, chatId, message) {
     try {
-      const apiUrl = `https://delirius-apiofc.vercel.app/download/tiktok?url=${q}`;
-      const { data } = await axios.get(apiUrl);
+        if (processedMessages.has(message.key.id)) return;
+        processedMessages.add(message.key.id);
+        setTimeout(() => processedMessages.delete(message.key.id), 5 * 60 * 1000);
 
-      if (!data.status || !data.data) return reply("💥 *Failed to download video!*\nTikTok link might be broken or server is offline.");
+        const text = message.message?.conversation || message.message?.extendedTextMessage?.text;
+        if (!text) return sock.sendMessage(chatId, { text: "Please provide a TikTok link for the video." });
 
-      const { title, like, comment, share, author, meta } = data.data;
-      const videoUrl = meta.media.find(v => v.type === "video")?.org;
-      const views = meta?.play_count || 'N/A';
+        const url = text.split(' ').slice(1).join(' ').trim();
+        if (!url) return sock.sendMessage(chatId, { text: "Please provide a TikTok link for the video." });
 
-      if (!videoUrl) return reply("🚫 *No video URL found!*\nSomething went wrong retrieving media.");
+        const isValidUrl = [
+            /https?:\/\/(?:www\.)?tiktok\.com\//,
+            /https?:\/\/(?:vm\.)?tiktok\.com\//,
+            /https?:\/\/(?:vt\.)?tiktok\.com\//,
+            /https?:\/\/(?:www\.)?tiktok\.com\/@/,
+            /https?:\/\/(?:www\.)?tiktok\.com\/t\//
+        ].some(pattern => pattern.test(url));
 
-      const caption =
-        `┏━━━━━━━━━━━━━━━┓\n` +
-        `   ⚡ *TikTok Video Found!* ⚡\n` +
-        `┗━━━━━━━━━━━━━━━┛\n\n` +
-        `👤 *Creator:* ${author.nickname} (@${author.username})\n` +
-        `📝 *Title:* ${title || 'Untitled'}\n` +
-        `👀 *Views:* ${views}\n` +
-        `❤️ *Likes:* ${like}\n` +
-        `💬 *Comments:* ${comment}\n` +
-        `🔁 *Shares:* ${share}\n\n` +
-        `🔗 *Link:* ${q}\n` +
-        `\n━━━━━━━━━━━━━━━━━━\n` +
-        `🧠 𝗣𝗼𝘄𝗲𝗿𝗲𝗱 𝗯𝘆 *𝐃𝐀𝐕𝐄-𝐌𝐃*`;
-
-      await sock.sendMessage(m.from, {
-        video: { url: videoUrl },
-        caption: caption,
-        contextInfo: {
-          forwardingScore: 999,
-          isForwarded: true,
-          mentionedJid: [m.sender],
-          forwardedNewsletterMessageInfo: {
-            newsletterName: "🔥 𝐃𝐀𝐕𝐄-𝐌𝐃 𝐔𝐩𝐝𝐚𝐭𝐞𝐬",
-            newsletterJid: "120363400480173280@newsletter"
-          }
+        if (!isValidUrl) {
+            return sock.sendMessage(chatId, { text: "That is not a valid TikTok link." });
         }
-      }, { quoted: m });
 
-    } catch (e) {
-      console.error("🔥 TikTok Download Error:", e);
-      return reply(`❌ *Internal Error!*\n\`\`\`${e.message}\`\`\``);
+        await sock.sendMessage(chatId, { react: { text: '🔄', key: message.key } });
+
+        try {
+            let downloadData = await ttdl(url);
+
+            // Use your new API as fallback
+            if (!downloadData || !downloadData.data || downloadData.data.length === 0) {
+                const apiUrl = `https://delirius-apiofc.vercel.app/download/tiktok?url=${encodeURIComponent(url)}`;
+                const { data } = await axios.get(apiUrl);
+
+                if (data && data.video && data.video.no_watermark) {
+                    return sock.sendMessage(chatId, {
+                        video: { url: data.video.no_watermark },
+                        mimetype: "video/mp4",
+                        caption: "𝗗𝗢𝗪𝗡𝗟𝗢𝗔𝗗𝗘𝗗 𝗕𝗬 𝐃𝐀𝐕𝐄-𝐌𝐃"
+                    }, { quoted: message });
+                }
+            }
+
+            if (!downloadData || !downloadData.data || downloadData.data.length === 0) {
+                return sock.sendMessage(chatId, { text: "No media found at the provided link." });
+            }
+
+            for (let i = 0; i < Math.min(20, downloadData.data.length); i++) {
+                const media = downloadData.data[i];
+                const mediaUrl = media.url;
+                const isVideo = /\.(mp4|mov|avi|mkv|webm)$/i.test(mediaUrl) || media.type === 'video';
+
+                if (isVideo) {
+                    await sock.sendMessage(chatId, {
+                        video: { url: mediaUrl },
+                        mimetype: "video/mp4",
+                        caption: "𝗗𝗢𝗪𝗡𝗟𝗢𝗔𝗗𝗘𝗗 𝗕𝗬 𝐃𝐀𝐕𝐄-𝐌𝐃"
+                    }, { quoted: message });
+                } else {
+                    await sock.sendMessage(chatId, {
+                        image: { url: mediaUrl },
+                        caption: "𝗗𝗢𝗪𝗡𝗟𝗢𝗔𝗗𝗘𝗗 𝗕𝗬 𝐃𝐀𝐕𝐄-𝐌𝐃"
+                    }, { quoted: message });
+                }
+            }
+        } catch (error) {
+            console.error('TikTok download error:', error);
+            return sock.sendMessage(chatId, { text: "❌ Failed to download TikTok video. Try again later." });
+        }
+    } catch (error) {
+        console.error('TikTok command error:', error);
+        await sock.sendMessage(chatId, { text: "❌ An error occurred. Try again later." });
     }
-  }
-};
+}
 
-export default tiktokdl;
+module.exports = tiktokCommand;
