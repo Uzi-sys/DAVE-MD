@@ -12,7 +12,7 @@ async function helpCommand(sock, chatId, message) {
 │ ─≽ *Plugins:* 235
 ┗━━━━━━━━━━━━━━━♢
 
-┏━━「 `Mode` 」
+┏━━「 \`Mode\` 」
 │ ─≽ *private*
 │ ─≽ *public*
 │ ─≽ *recording*
