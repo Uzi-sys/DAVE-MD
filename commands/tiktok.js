@@ -1,59 +1,96 @@
 const { ttdl } = require("ruhend-scraper");
 const axios = require('axios');
 
+// Store processed message IDs to prevent duplicates
 const processedMessages = new Set();
 
 async function tiktokCommand(sock, chatId, message) {
     try {
-        if (processedMessages.has(message.key.id)) return;
+        // Check if message has already been processed
+        if (processedMessages.has(message.key.id)) {
+            return;
+        }
+        
+        // Add message ID to processed set
         processedMessages.add(message.key.id);
-        setTimeout(() => processedMessages.delete(message.key.id), 5 * 60 * 1000);
+        
+        // Clean up old message IDs after 5 minutes
+        setTimeout(() => {
+            processedMessages.delete(message.key.id);
+        }, 5 * 60 * 1000);
 
         const text = message.message?.conversation || message.message?.extendedTextMessage?.text;
-        if (!text) return sock.sendMessage(chatId, { text: "Please provide a TikTok link for the video." });
+        
+        if (!text) {
+            return await sock.sendMessage(chatId, { 
+                text: "Please provide a TikTok link for the video."
+            });
+        }
 
+        // Extract URL from command
         const url = text.split(' ').slice(1).join(' ').trim();
-        if (!url) return sock.sendMessage(chatId, { text: "Please provide a TikTok link for the video." });
+        
+        if (!url) {
+            return await sock.sendMessage(chatId, { 
+                text: "Please provide a TikTok link for the video."
+            });
+        }
 
-        const isValidUrl = [
+        // Check for various TikTok URL formats
+        const tiktokPatterns = [
             /https?:\/\/(?:www\.)?tiktok\.com\//,
             /https?:\/\/(?:vm\.)?tiktok\.com\//,
             /https?:\/\/(?:vt\.)?tiktok\.com\//,
             /https?:\/\/(?:www\.)?tiktok\.com\/@/,
             /https?:\/\/(?:www\.)?tiktok\.com\/t\//
-        ].some(pattern => pattern.test(url));
+        ];
 
+        const isValidUrl = tiktokPatterns.some(pattern => pattern.test(url));
+        
         if (!isValidUrl) {
-            return sock.sendMessage(chatId, { text: "That is not a valid TikTok link." });
+            return await sock.sendMessage(chatId, { 
+                text: "That is not a valid TikTok link. Please provide a valid TikTok video link."
+            });
         }
 
-        await sock.sendMessage(chatId, { react: { text: '🔄', key: message.key } });
+        await sock.sendMessage(chatId, {
+            react: { text: '🔄', key: message.key }
+        });
 
         try {
+            // First try with the direct URL
             let downloadData = await ttdl(url);
-
-            // Use your new API as fallback
+            
+            // If that fails, try with the API
             if (!downloadData || !downloadData.data || downloadData.data.length === 0) {
-                const apiUrl = `https://delirius-apiofc.vercel.app/download/tiktok?url=${encodeURIComponent(url)}`;
-                const { data } = await axios.get(apiUrl);
-
-                if (data && data.video && data.video.no_watermark) {
-                    return sock.sendMessage(chatId, {
-                        video: { url: data.video.no_watermark },
-                        mimetype: "video/mp4",
-                        caption: "𝗗𝗢𝗪𝗡𝗟𝗢𝗔𝗗𝗘𝗗 𝗕𝗬 𝐃𝐀𝐕𝐄-𝐌𝐃"
-                    }, { quoted: message });
+                const apiResponse = await axios.get(`https://api.dreaded.site/api/tiktok?url=${encodeURIComponent(url)}`);
+                if (apiResponse.data && apiResponse.data.status === 200 && apiResponse.data.tiktok) {
+                    const videoUrl = apiResponse.data.tiktok.video;
+                    if (videoUrl) {
+                        await sock.sendMessage(chatId, {
+                            video: { url: videoUrl },
+                            mimetype: "video/mp4",
+                            caption: "𝗗𝗢𝗪𝗡𝗟𝗢𝗔𝗗𝗘𝗗 𝗕𝗬 𝐃𝐀𝐕𝐄-𝐌𝐃"
+                        }, { quoted: message });
+                        return;
+                    }
                 }
             }
 
             if (!downloadData || !downloadData.data || downloadData.data.length === 0) {
-                return sock.sendMessage(chatId, { text: "No media found at the provided link." });
+                return await sock.sendMessage(chatId, { 
+                    text: "No media found at the provided link. Please try again with a different link."
+                });
             }
 
-            for (let i = 0; i < Math.min(20, downloadData.data.length); i++) {
-                const media = downloadData.data[i];
+            const mediaData = downloadData.data;
+            for (let i = 0; i < Math.min(20, mediaData.length); i++) {
+                const media = mediaData[i];
                 const mediaUrl = media.url;
-                const isVideo = /\.(mp4|mov|avi|mkv|webm)$/i.test(mediaUrl) || media.type === 'video';
+
+                // Check if URL ends with common video extensions
+                const isVideo = /\.(mp4|mov|avi|mkv|webm)$/i.test(mediaUrl) || 
+                              media.type === 'video';
 
                 if (isVideo) {
                     await sock.sendMessage(chatId, {
@@ -69,13 +106,17 @@ async function tiktokCommand(sock, chatId, message) {
                 }
             }
         } catch (error) {
-            console.error('TikTok download error:', error);
-            return sock.sendMessage(chatId, { text: "❌ Failed to download TikTok video. Try again later." });
+            console.error('Error in TikTok download:', error);
+            await sock.sendMessage(chatId, { 
+                text: "Failed to download the TikTok video. Please try again with a different link."
+            });
         }
     } catch (error) {
-        console.error('TikTok command error:', error);
-        await sock.sendMessage(chatId, { text: "❌ An error occurred. Try again later." });
+        console.error('Error in TikTok command:', error);
+        await sock.sendMessage(chatId, { 
+            text: "An error occurred while processing the request. Please try again later."
+        });
     }
 }
 
-module.exports = tiktokCommand;
+module.exports = tiktokCommand; 
