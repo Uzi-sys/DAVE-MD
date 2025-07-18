@@ -5,13 +5,14 @@ const path = require('path');
 
 async function helpCommand(sock, chatId, message) {
     const helpMessage = `
- ━━┏━━⬣ ⌜\`𝐃𝐀𝐕𝐄-𝐌𝐃\`⌟
+┏━━「 `𝐃𝐀𝐕𝐄-𝐌𝐃` 」
 │ ─≽ *🤖 ${settings.botName || '𝐃𝐀𝐕𝐄-𝐌𝐃'}*
 │ ─≽ *Version:* ${settings.version || '2.0.0'}
-│ ─≽ *By:* ${settings.botOwner || '𝐃𝐀𝐕𝐄-𝐌𝐃'}
+│ ─≽ *By:* ${settings.botOwner || '𝐃𝐀𝐕𝐄-𝐌𝐃'}*
 │ ─≽ *Plugins:* 235
- ━━┗━━⬣
-┏━━「 \`Mode\` 」
+┗━━━━━━━━━━━━━━━♢
+
+┏━━「 `Mode` 」
 │ ─≽ *private*
 │ ─≽ *public*
 │ ─≽ *recording*
