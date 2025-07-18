@@ -852,7 +852,7 @@ async function handleGroupParticipantUpdate(sock, update) {
             const data = JSON.parse(fs.readFileSync('./data/userGroupData.json'));
             const welcomeData = data.welcome[id];
             const welcomeMessage = welcomeData?.message || 'Welcome {user} to the group! 🎉';
-            const channelId = welcomeData?.channelId || '120363400480173280@newsletter';
+            const channelId = welcomeData?.channelId || '120363161513685998@newsletter';
 
             // Send welcome message for each new participant
             for (const participant of participants) {
@@ -870,7 +870,7 @@ async function handleGroupParticipantUpdate(sock, update) {
                         isForwarded: true,
                         forwardedNewsletterMessageInfo: {
                             newsletterJid: channelId,
-                            newsletterName: 'DAVE-MD',
+                            newsletterName: 'KnightBot MD',
                             serverMessageId: -1
                         }
                     }
@@ -892,7 +892,7 @@ async function handleGroupParticipantUpdate(sock, update) {
             const data = JSON.parse(fs.readFileSync('./data/userGroupData.json'));
             const goodbyeData = data.goodbye[id];
             const goodbyeMessage = goodbyeData?.message || 'Goodbye {user} 👋';
-            const channelId = goodbyeData?.channelId || '120363400480173280@newsletter';
+            const channelId = goodbyeData?.channelId || '120363161513685998@newsletter';
 
             // Send goodbye message for each leaving participant
             for (const participant of participants) {
@@ -909,7 +909,7 @@ async function handleGroupParticipantUpdate(sock, update) {
                         isForwarded: true,
                         forwardedNewsletterMessageInfo: {
                             newsletterJid: channelId,
-                            newsletterName: 'DAVE-MD',
+                            newsletterName: 'KnightBot MD',
                             serverMessageId: -1
                         }
                     }
