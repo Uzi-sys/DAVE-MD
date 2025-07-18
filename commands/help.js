@@ -1,54 +1,6 @@
 // GIFTEDDAVE PROPERTY 😊
 
-const settings = require('../settings');
-const fs = require('fs');
-const path = require('path');
-const os = require('os');
-const pkg = require('../package.json');
 
-const startTime = Date.now();
-
-function formatUptime(ms) {
-  let seconds = Math.floor(ms / 1000);
-  const days = Math.floor(seconds / (3600 * 24));
-  seconds %= 3600 * 24;
-  const hours = Math.floor(seconds / 3600);
-  seconds %= 3600;
-  const minutes = Math.floor(seconds / 60);
-  seconds %= 60;
-
-  return `${days}d ${hours}h ${minutes}m ${seconds}s`;
-}
-
-function ram() {
-  const totalMem = os.totalmem() / (1024 * 1024 * 1024);
-  const freeMem = os.freemem() / (1024 * 1024 * 1024);
-  return `${freeMem.toFixed(2)} GB / ${totalMem.toFixed(2)} GB`;
-}
-
-function runtime(seconds) {
-  seconds = Number(seconds);
-  const d = Math.floor(seconds / (3600 * 24));
-  const h = Math.floor((seconds % (3600 * 24)) / 3600);
-  const m = Math.floor((seconds % 3600) / 60);
-  const s = Math.floor(seconds % 60);
-  return `${d}d ${h}h ${m}m ${s}s`;
-}
-
-async function helpCommand(conn, m, quoted, commands = []) {
-  const uptime = formatUptime(Date.now() - startTime);
-  const pushname = m.pushName || 'undefined';
-  const totalCommands = commands.length || 214;
-
-  const menuCaption = `
-━━┏━━⬣ ⌜\`𝐃𝐀𝐕𝐄-𝐗𝐌𝐃\`⌟
-│ ─≽ *Creator*: *𝐃𝐚𝐯𝐞*
-│ ─≽ *Bot Name* :${global.botname}
-│ ─≽ *Name* : ${pushname}
-│ ─≽ *Version* :*1.0.0*
-│ ─≽ *Runtime* : ${runtime(process.uptime())}
-│ ─≽ *Totalfeature* : ${totalCommands}
-│ ─≽ *Ram* :${ram()}
 
 ┏━━「 \`Mode\` 」
 │ ─≽ *private*
