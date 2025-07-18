@@ -2,15 +2,48 @@
 const settings = require('../settings');
 const fs = require('fs');
 const path = require('path');
+const os = require('os');
+const pkg = require('../package.json');
 
-async function helpCommand(sock, chatId, message) {
-    const helpMessage = `
-┏━━
-│ ─≽ *🤖 ${settings.botName || '𝐃𝐀𝐕𝐄-𝐌𝐃'}*
+const startTime = Date.now();
+
+function formatUptime(ms) {
+  let seconds = Math.floor(ms / 1000);
+  const days = Math.floor(seconds / (3600 * 24));
+  seconds %= 3600 * 24;
+  const hours = Math.floor(seconds / 3600);
+  seconds %= 3600;
+  const minutes = Math.floor(seconds / 60);
+  seconds %= 60;
+
+  return `${days}d ${hours}h ${minutes}m ${seconds}s`;
+}
+
+function ram() {
+  const totalMem = os.totalmem() / (1024 * 1024 * 1024);
+  const freeMem = os.freemem() / (1024 * 1024 * 1024);
+  return `${freeMem.toFixed(2)} GB / ${totalMem.toFixed(2)} GB`;
+}
+
+function runtime(seconds) {
+  seconds = Number(seconds);
+  const d = Math.floor(seconds / (3600 * 24));
+  const h = Math.floor((seconds % (3600 * 24)) / 3600);
+  const m = Math.floor((seconds % 3600) / 60);
+  const s = Math.floor(seconds % 60);
+  return `${d}d ${h}h ${m}m ${s}s`;
+}
+
+async function helpCommand(conn, m, quoted, commands = []) {
+  const uptime = formatUptime(Date.now() - startTime);
+  const menuCaption = `
+ ━━┏━━⬣ ⌜\`𝐃𝐀𝐕𝐄-𝐌𝐃\`⌟
+│ ─≽ *Creator*: *GIFTED DAVE 🗿*
+│ ─≽ *Owner* :* ${settings.botOwner || '𝐃𝐀𝐕𝐄'}*
 │ ─≽ *Version:* ${settings.version || '2.0.0'}
-│ ─≽ *By:* ${settings.botOwner || '𝐃𝐀𝐕𝐄'}*
-│ ─≽ *Plugins:* 235
-┗━━━━━━━━━━━━━━━♢
+│ ─≽ *Runtime* : ${runtime(process.uptime())}
+│ ─≽ *plugins* : *376*
+│ ─≽ *Ram* :${ram()}t
 
 ┏━━「 \`Mode\` 」
 │ ─≽ *private*
