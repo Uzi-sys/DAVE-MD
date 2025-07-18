@@ -13,7 +13,7 @@ function runtime(seconds) {
 async function aliveCommand(sock, chatId, message) {
     try {
         const status = `
-╭───〔 *🤖 BOT STATUS* 〕───◉
+╭───〔 *BOT STATUS* 〕───◉
 │✨ *Bot is Active & Online!*
 │
 │👨‍💻 *Owner:* Dave
