@@ -280,4 +280,7 @@ async function helpCommand(conn, m, quoted, commands = []) {
   }
 }
 
-module.exports = helpCommand;
+module.exports = {
+  command: ['menu', 'help'],
+  handler: helpCommand
+};
