@@ -1,33 +1,41 @@
-const axios = require('axios');
+const fetch = require('node-fetch');
 
-module.exports = {
-  name: "lyrics",
-  alias: ["songlyrics", "getlyrics"],
-  category: "media",
-  desc: "Fetch lyrics for any song using artist and title.",
-  use: "<artist> | <title>",
-
-  async execute(m, { text, args, command, prefix }) {
-    try {
-      if (!text.includes("|")) {
-        return m.reply(`❌ Use format:\n${prefix + command} <artist> | <title>\n\nExample:\n${prefix + command} eminem | lose yourself`);
-      }
-
-      const [artist, title] = text.split("|").map((str) => str.trim());
-      const apiUrl = `https://api.lyrics.ovh/v1/${encodeURIComponent(artist)}/${encodeURIComponent(title)}`;
-      const response = await axios.get(apiUrl);
-      const result = response.data;
-
-      if (!result || !result.lyrics) {
-        return m.reply("❌ Lyrics not found. Try another song.");
-      }
-
-      const caption = `🎤 *Lyrics for ${title} by ${artist}*:\n\n${result.lyrics.substring(0, 4000)}`;
-      return m.reply(caption);
-
-    } catch (err) {
-      console.error(err);
-      return m.reply("❌ Error fetching lyrics. Make sure the artist/title is correct.");
+async function lyricsCommand(sock, chatId, songTitle) {
+    if (!songTitle) {
+        await sock.sendMessage(chatId, { 
+            text: '🔍 Please enter the song name to get the lyrics! Usage: *lyrics <song name>*'
+        });
+        return;
     }
-  }
-};
+
+    try {
+        // Fetch song lyrics using the some-random-api.com API
+        const apiUrl = `https://some-random-api.com/lyrics?title=${encodeURIComponent(songTitle)}`;
+        const res = await fetch(apiUrl);
+        
+        if (!res.ok) {
+            throw await res.text();
+        }
+        
+        const json = await res.json();
+        
+        if (!json.lyrics) {
+            await sock.sendMessage(chatId, { 
+                text: `❌ Sorry, I couldn't find any lyrics for "${songTitle}".`
+            });
+            return;
+        }
+        
+        // Sending the formatted result to the user
+        await sock.sendMessage(chatId, {
+            text: `🎵 *Song Lyrics* 🎶\n\n▢ *Title:* ${json.title || songTitle}\n▢ *Artist:* ${json.author || 'Unknown'}\n\n📜 *Lyrics:*\n${json.lyrics}\n\nHope you enjoy the music! 🎧 🎶`
+        });
+    } catch (error) {
+        console.error('Error in lyrics command:', error);
+        await sock.sendMessage(chatId, { 
+            text: `❌ An error occurred while fetching the lyrics for "${songTitle}".`
+        });
+    }
+}
+
+module.exports = { lyricsCommand };
