@@ -52,9 +52,12 @@ async function playCommand(sock, chatId, message) {
     } catch (error) {
         console.error('Error in song2 command:', error);
         await sock.sendMessage(chatId, { 
-            text: "*Download failed. Please try again later.*"
+            text: "Download failed. Please try again later."
         });
     }
 }
 
-module.exports = playCommand;
+module.exports = playCommand; 
+
+/*Powered by DAVE-MD*
+*Credits to Keith MD*`*/
