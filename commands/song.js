@@ -1,6 +1,7 @@
 /*Créditos A Quien Correspondan 
 Play Traido y Editado 
-Por Cuervo-Team-Supreme*/
+Por Cuervo-Team-Dace*/
+
 const axios = require('axios');
 const crypto = require('crypto');
 const yts = require('yt-search');
@@ -184,8 +185,8 @@ async function songCommand(sock, chatId, message) {
         let sentMsg;
         try {
             sentMsg = await sock.sendMessage(chatId, {
-                image: { url: result.result.thumbnail },
-                caption: `*${result.result.title}*\n\n> _Downloading your song..._\n > *_By Knight Bot MD_*`
+                //image: { url: result.result.thumbnail },
+                caption: `*${result.result.title}*\n\n _Downloading song Request ..._\n  *_By 𝐉ᴜɴᴇ 𝐌ᴅ_*`
             }, { quoted: message });
         } catch (e) {
             // If thumbnail fails, fallback to just sending the audio
