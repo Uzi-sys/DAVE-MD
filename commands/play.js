@@ -5,7 +5,7 @@ async function playCommand(sock, chatId, message) {
     try {
         const text = message.message?.conversation || message.message?.extendedTextMessage?.text;
         const searchQuery = text.split(' ').slice(1).join(' ').trim();
-        
+
         if (!searchQuery) {
             return await sock.sendMessage(chatId, { 
                 text: "What song do you want to download?"
@@ -30,7 +30,7 @@ async function playCommand(sock, chatId, message) {
         const urlYt = video.url;
 
         // Fetch audio data from API
-        const response = await axios.get(`https://apis-keith.vercel.app/download/dlmp3?url=${urlYt}`);
+        const response = await axios.get(`https://apis.davidcyriltech.my.id/youtube/mp3?url=${urlYt}`);
         const data = response.data;
 
         if (!data || !data.status || !data.result || !data.result.downloadUrl) {
@@ -52,7 +52,7 @@ async function playCommand(sock, chatId, message) {
     } catch (error) {
         console.error('Error in song2 command:', error);
         await sock.sendMessage(chatId, { 
-            text: "Download failed. Please try again later."
+            text: "*Download failed. Please try again later.*"
         });
     }
 }
@@ -60,4 +60,3 @@ async function playCommand(sock, chatId, message) {
 module.exports = playCommand; 
 
 /*Powered by DAVE-MD*
-*Credits to Keith MD*`*/
