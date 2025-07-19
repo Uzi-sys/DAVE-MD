@@ -1,6 +1,6 @@
 /*Créditos A Quien Correspondan 
 Play Traido y Editado 
-Por Cuervo-Team-Dace*/
+Por Cuervo-Team-Dave*/
 
 const axios = require('axios');
 const crypto = require('crypto');
