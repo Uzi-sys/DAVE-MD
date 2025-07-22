@@ -39,12 +39,12 @@ async function helpCommand(conn, m, quoted, commands = []) {
   const uptime = formatUptime(Date.now() - startTime);
   const menuCaption = `
 ━━┏━━⬣ ⌜\𝐃𝐀𝐕𝐄-𝐌𝐃\⌟
-│ ─≽ *Creator*:*『𝐆𝐈𝐅𝐓𝐄𝐃 𝐃𝐀𝐕𝐄』*
-│ ─≽ *Owner* :*${settings.botOwner || '𝐃𝐀𝐕𝐄'}*
-│ ─≽ *Version*:*${settings.version || '2.0.0'}*
+│ ─≽ *Creator* :*『𝐆𝐈𝐅𝐓𝐄𝐃 𝐃𝐀𝐕𝐄』*
+│ ─≽ *Owner*   :*${settings.botOwner || '𝐃𝐀𝐕𝐄'}*
+│ ─≽ *Version* :*${settings.version || '2.0.0'}*
 │ ─≽ *Runtime* :*${runtime(process.uptime())}*
 │ ─≽ *plugins* : *376*
-│ ─≽ *Ram* :${ram()}t
+│ ─≽ *Ram*     :${ram()}t
 
 
 ┏━━「 \`Mode\` 」
