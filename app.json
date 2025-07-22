@@ -1,75 +1,100 @@
 {
   "name": "DAVE-MD",
-  "description": "A WhatsApp Bot Created by ElitePro",
-  "logo": "https://files.catbox.moe/nxzaly.jpg",
-  "keywords": ["bot", "whatsapp", "baileys", "javascript", "elitepro"],
-  "success_url": "/",
-  "stack": "heroku-24",
-  "env": {
+  "description": "🚀 DAVE-MD WhatsApp MultiDevice Bot – Your ultimate AI-powered assistant, built in Node.js to revolutionize WhatsApp automation! From smart replies to advanced moderation, experience seamless interaction like never before. 💡✨",
+  "logo": "https://files.catbox.moe/bn3ast.jpg",
+  "keywords": ["DAVE-MD", "whatsapp-bot", "whatsapp-md-bot"],
+  "repository": "https://github.com/giftedsession/DAVE-MD",
+  "stack": "container",
+  "env": { 
+
     "SESSION_ID": {
-      "description": "Put your SESSION_ID here.",
+      "description": "Ensure you session id is the creds json type",
+      "required": true,
       "value": ""
     },
-    "PREFIX": {
-      "description": "Bot command prefix (example: ., !, #)",
-      "value": "."
-    },
-    "OWNER_NUMBER": {
-      "description": "Owner's phone number in international format (without +).",
-      "value": "254104260236"
+    "MODE": {
+      "description": "Set to 'public' or 'private' to define bot mode",
+      "required": true,
+      "value": "public"
     },
     "OWNER_NAME": {
-      "description": "Owner's display name.",
-      "value":"Dave"
+      "description": "Your name as the bot owner",
+      "required": true,
+      "value": "Dave"
     },
-    "BOT_NAME": {
-      "description": "Bot display name.",
-      "value": "DAVE-MD"
+    "OWNER_NUMBER": {
+      "description": "Your WhatsApp number",
+      "required": true,
+      "value": "254104260236"
     },
-    "AUTO_RECORDING": {
-      "description": "Enable auto-recording simulation (true or false).",
+    "AUTO_READ": {
+      "description": "Enable bot to auto-read messages (true/false)",
+      "required": false,
       "value": "false"
     },
     "AUTO_TYPING": {
-      "description": "Enable auto-typing simulation (true or false).",
+      "description": "Enable bot to show typing status (true/false)",
+      "required": false,
       "value": "false"
     },
-    "AUTO_RECORD_TYPE": {
-      "description": "Enable audio recording type simulation.",
+    "AUTO_RECORDING": {
+      "description": "Enable bot to show recording status (true/false)",
+      "required": false,
       "value": "false"
     },
-    "AUTO_READ": {
-      "description": "Auto read all incoming messages.",
+    "ALWAYS_ONLINE": {
+      "description": "Keep bot always online (true/false)",
+      "required": false,
       "value": "false"
-    },
-    "AUTO_BIO": {
-      "description": "Enable auto bio updates with time.",
-      "value": "true"
-    },
-    "ANTI_92": {
-      "description": "Block +92 numbers automatically (true or false).",
-      "value": "false"
-    },
-    "AUTO_SW_VIEW": {
-      "description": "Auto-view WhatsApp statuses.",
-      "value": "true"
-    },
-    "WELCOME": {
-      "description": "Enable group welcome message.",
-      "value": "true"
     },
     "AUTO_REACT": {
-      "description": "Enable automatic reactions to messages.",
+      "description": "Enable bot to auto-react to messages (true/false)",
+      "required": false,
       "value": "false"
     },
-    "AUTO_LIKE_STATUS": {
-      "description": "Automatically react to viewed statuses.",
+    "ANTI_DELETE": {
+      "description": "Enable anti-delete feature (true/false)",
+      "required": true,
       "value": "true"
+    },
+    "AUTO_STATUS_SEEN": {
+      "description": "Enable bot to view statuses (true/false)",
+      "required": false,
+      "value": "true"
+    },
+    "AUTO_STATUS_REPLY": {
+      "description": "Enable bot to reply after viewing a status (true/false)",
+      "required": false,
+      "value": "false"
+    },
+    "STATUS_READ_MSG": {
+      "description": "Set the message bot sends after viewing a status",
+      "required": false,
+      "value": "*Status Seen*"
+    },
+    "AUTO_BLOCK": {
+      "description": "Enable bot to auto-block specific numbers (true/false)",
+      "required": false,
+      "value": "false"
+    },
+    "REJECT_CALL": {
+      "description": "Enable bot to reject incoming calls (true/false)",
+      "required": false,
+      "value": "false"
     }
   },
   "buildpacks": [
     {
-      "url": "https://github.com/heroku/heroku-buildpack-nodejs.git"
+      "url": "heroku/nodejs"
+    },
+    {
+      "url": "https://github.com/DuckyTeam/heroku-buildpack-imagemagick.git"
+    },
+    {
+      "url": "https://github.com/jonathanong/heroku-buildpack-ffmpeg-latest"
+    },
+    {
+      "url": "https://github.com/clhuang/heroku-buildpack-webp-binaries.git"
     }
   ]
-}
+  }
