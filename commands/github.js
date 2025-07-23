@@ -1,3 +1,42 @@
-// GIFTEDDAVE PROPERTY 👻⚧️
+// github.js
 
-const _0xc08d18=_0x371e;(function(_0x3292be,_0x3a4746){const _0x4eddda=_0x371e,_0x16ea16=_0x3292be();while(!![]){try{const _0x336005=-parseInt(_0x4eddda(0x81))/0x1*(parseInt(_0x4eddda(0x7d))/0x2)+parseInt(_0x4eddda(0x75))/0x3*(-parseInt(_0x4eddda(0x85))/0x4)+parseInt(_0x4eddda(0x84))/0x5*(parseInt(_0x4eddda(0x83))/0x6)+-parseInt(_0x4eddda(0x7a))/0x7*(parseInt(_0x4eddda(0x77))/0x8)+-parseInt(_0x4eddda(0x79))/0x9+parseInt(_0x4eddda(0x80))/0xa*(parseInt(_0x4eddda(0x76))/0xb)+parseInt(_0x4eddda(0x82))/0xc;if(_0x336005===_0x3a4746)break;else _0x16ea16['push'](_0x16ea16['shift']());}catch(_0x2bc335){_0x16ea16['push'](_0x16ea16['shift']());}}}(_0xbad3,0x88070));function _0xbad3(){const _0x16e5b7=['2PLAskn','\x0a╭━===========================\x0a┃\x20📌\x20DAVE-MD\x20REPO\x20INFO\x20📌\x0a┃\x20⭐\x20Total\x20Stars:\x201,264\x0a┃\x20🍴\x20Total\x20Forks:\x205,610\x0a┃\x20🕰\x20Updated:\x2005/07/2025\x0a╰━===========================\x0a*ғᴏʀᴋ\x20ᴀɴᴅ\x20sᴛᴀʀ\x20ᴛʜᴇ\x20ʀᴇᴘᴏ*\x0a\x0a>\x20https://github.com/giftedsession/DAVE-MD\x0a\x0aFor\x20more\x20info\x20contact\x20:\x20+254104260236\x0a\x0a®2025\x20𝐃𝐀𝐕𝐄\x20ᴛᴇᴄʜ🔥\x0a\x0a>\x20ᴘᴏᴡᴇʀᴇᴅ\x20ʙʏ\x20𝐃𝐀𝐕𝐄\x20ᴛᴇᴄʜ\x20👻\x0a\x0a','120363400480173280@newsletter','5030CvuKzt','948257zIODka','29463168TESnIE','906SiEJad','17375gbwTef','1704388EACXIl','Error\x20in\x20github\x20command:','DAVE-MD♀️','6hcqiOz','6655MVKRym','1254200ovmAur','sendMessage','6929190ILTALH','7WqqLDW','exports','error'];_0xbad3=function(){return _0x16e5b7;};return _0xbad3();}function _0x371e(_0x2a5412,_0x1cfd16){const _0xbad319=_0xbad3();return _0x371e=function(_0x371e33,_0x392025){_0x371e33=_0x371e33-0x74;let _0x4db5fc=_0xbad319[_0x371e33];return _0x4db5fc;},_0x371e(_0x2a5412,_0x1cfd16);}async function githubCommand(_0x14b3e2,_0x3e04ca){const _0x2dbe64=_0x371e,_0x14d83a=_0x2dbe64(0x7e);try{await _0x14b3e2[_0x2dbe64(0x78)](_0x3e04ca,{'text':_0x14d83a,'contextInfo':{'forwardingScore':0x1,'isForwarded':!![],'forwardedNewsletterMessageInfo':{'newsletterJid':_0x2dbe64(0x7f),'newsletterName':_0x2dbe64(0x74),'serverMessageId':-0x1}}});}catch(_0x27792b){console[_0x2dbe64(0x7c)](_0x2dbe64(0x86),_0x27792b),await _0x14b3e2['sendMessage'](_0x3e04ca,{'text':'❌\x20Error\x20fetching\x20repository\x20information.'});}}module[_0xc08d18(0x7b)]=githubCommand;
+async function githubCommand(conn, chatId) {
+  const githubText = `
+╭━===========================
+┃ 📌 DAVE-MD REPO INFO 📌
+┃ ⭐ Total Stars: 1,264
+┃ 🍴 Total Forks: 5,610
+┃ 🕰 Updated: 05/07/2025
+╰━===========================
+*ғᴏʀᴋ ᴀɴᴅ sᴛᴀʀ ᴛʜᴇ ʀᴇᴘᴏ*
+
+> https://github.com/giftedsession/DAVE-MD
+
+For more info contact : +254104260236
+
+®2025 𝐃𝐀𝐕𝐄 ᴛᴇᴄʜ🔥
+
+> ᴘᴏᴡᴇʀᴇᴅ ʙʏ 𝐃𝐀𝐕𝐄 ᴛᴇᴄʜ 👻
+`;
+
+  try {
+    await conn.sendMessage(chatId, {
+      image: { url: 'https://files.catbox.moe/30nl6i.jpg' },
+      caption: githubText,
+      contextInfo: {
+        forwardingScore: 1,
+        isForwarded: true,
+        forwardedNewsletterMessageInfo: {
+          newsletterJid: "120363400480173280@newsletter",
+          newsletterName: "DAVE-MD♀️",
+          serverMessageId: -1
+        }
+      }
+    });
+  } catch (err) {
+    console.error("Error in github command:", err);
+    await conn.sendMessage(chatId, { text: "❌ Error sending repository info with image." });
+  }
+}
+
+module.exports = githubCommand;
