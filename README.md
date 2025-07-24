@@ -64,26 +64,31 @@ _*Dont forget to fork & star repo*_
 
 ---
 
-### Step 2: Get Pair Code
+> 2:  **Get Pair Code**
 
-Deploy the bot and easily connect it to your WhatsApp account by pair code. Click the button below to deploy the bot on Replit.
+_Deploy the bot and easily connect it to your WhatsApp account by pair code. Bellow🥈_
 
-<div align="center">
-  <a href="https://replit.com/@DGXeon/Xeon-PairCode?v=1" target="_blank">
-    <img src="https://img.shields.io/badge/GET%20PAIR%20CODE-Replit-success?style=for-the-badge" alt="Deploy on Replit"/>
+<div align="left">
+  <a href="https://sessions-june2.onrender.com" target="_blank">
+    <img src="https://img.shields.io/badge/GET%20PAIR%20CODE-Server%20One-green?style=for-the-badge" alt="PAIR CODE"/>
   </a>
 </div>
 
-<div align="center">
-  <a href="https://knight-bot-paircode.onrender.com" target="_blank">
-    <img src="https://img.shields.io/badge/GET%20PAIR%20CODE-Easy%20Method-ff4d4d?style=for-the-badge" alt="Generate Pair Code"/>
+<div align="left">
+  <a href="https://sessions-june2.onrender.com" target="_blank">
+    <img src="https://img.shields.io/badge/GET%20PAIR%20CODE-Server%20Two-darkgreen?style=for-the-badge" alt="PAIR CODE"/>
   </a>
 </div>
 
+> 3: **DOWNLOAD BOT ZIP**
 
-### After getting creds.json file, upload it to session folder
+_Download Bot Zip file From the button Bellow_
+<p align="left">
+    <a href="https://codeload.github.com/giftedsession/DAVE-MD/zip/refs/heads/main" target="_blank">
+        <img alt="Download zip" src="https://img.shields.io/badge/Download Zip-100000?style=for-the-badge&logo=scan&logoColor=white&labelColor=darkorange&color=purple"/>
+    </a>
+</p>
 
----
 
 ### Step 3: Deploy Now
 
