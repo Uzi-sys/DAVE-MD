@@ -97,7 +97,8 @@ _Download Bot Zip file From the button Bellow_
 
 
 ### 📽️ Deployment Tutorial
-[![YouTube Tutorial](https://img.shields.io/badge/Deploy%20Tutorial-YouTube-red?logo=youtube&style=for-the-badge)](https://youtube.com/shorts/JL5oPHoOa-A?si=8E9bZWU5rotFEdmj)
+[![Watch Video](https://img.shields.io/badge/Watch%20on-YouTube-red?logo=youtube)](https://youtu.be/oewdMmpkUCM?si=o6vdNtDCX0R5O_re)
+
 
 ---
 
