@@ -66,19 +66,15 @@ _*Dont forget to fork & star repo*_
 
 > 2:  **Get Pair Code**
 
-_Deploy the bot and easily connect it to your WhatsApp account by pair code. Bellow🥈_
+_Deploy the bot and easily connect it to your WhatsApp account by pair code. Below 🥈_
 
 <div align="left">
-  <a href="https://sessions-june2.onrender.com" target="_blank">
-    <img src="https://img.shields.io/badge/GET%20PAIR%20CODE-Server%20One-green?style=for-the-badge" alt="PAIR CODE"/>
+  <a href="https://giveawaygifted-2a6a0e3932ac.herokuapp.com/" target="_blank">
+    <img src="https://img.shields.io/badge/GET%20PAIR%20CODE-Hosted%20on%20Heroku-green?style=for-the-badge" alt="PAIR CODE"/>
   </a>
 </div>
 
-<div align="left">
-  <a href="https://sessions-june2.onrender.com" target="_blank">
-    <img src="https://img.shields.io/badge/GET%20PAIR%20CODE-Server%20Two-darkgreen?style=for-the-badge" alt="PAIR CODE"/>
-  </a>
-</div>
+---
 
 > 3: **DOWNLOAD BOT ZIP**
 
@@ -91,25 +87,16 @@ _Download Bot Zip file From the button Bellow_
 
 
 ### Step 3: Deploy Now
-
-For further customization and setup guidance, click the button below:
-
-<div align="center">
-  <a href="https://youtu.be/-oz_u1iMgf8">
-    <img src="https://img.shields.io/badge/Deploy Tutorial-dc3545?style=for-the-badge&logo=youtube" alt="YouTube Link"/>
-  </a>
-  <a href="https://bot-hosting.net/?aff=1068419752923508776">
-    <img src="https://img.shields.io/badge/Deploy on Panel-28a745?style=for-the-badge" alt="Deploy on Panel"/>
-  </a>
-</div>
-
+---
 
 ### Deploy Now on Below Panel
 <div align="center">
-<a href="https://dashboard.katabump.com/auth/login#d6b7d6" target="_blank">
-  <img src="https://img.shields.io/badge/Katabump-D6B7D6?style=for-the-badge&logo=server&logoColor=black" alt="Katabump"/>
+<a href="https://dashboard.katabump.com/auth/login#ce51a9" target="_blank">
+  <img src="https://img.shields.io/badge/Katabump-Panel-purple?style=for-the-badge&logo=server&logoColor=white" alt="Katabump"/>
 </a>
 </div>
+
+---
 
 Click on any platform below to deploy the bot instantly
 
