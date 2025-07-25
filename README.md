@@ -67,15 +67,14 @@ _*Dont forget to fork & star repo*_
 > 2:  **Get Pair Code**
 
 _Deploy the bot and easily connect it to your WhatsApp account by pair code. Below 🥈_
-
 <div align="left">
-
-<a href="https://giveawaygifted-2a6a0e3932ac.herokuapp.com/" target="_blank">
-  <img src="https://img.shields.io/badge/Fastest%20(Heroku)-Pair%20Now-green?style=for-the-badge&logo=heroku" alt="Heroku Pairing"/>
-</a><br><br>
 
 <a href="https://davepairing.onrender.com/" target="_blank">
   <img src="https://img.shields.io/badge/Alternative%20(Render)-Pair%20Now-blue?style=for-the-badge&logo=render" alt="Render Pairing"/>
+</a><br><br>
+
+<a href="https://giveawaygifted-2a6a0e3932ac.herokuapp.com/" target="_blank">
+  <img src="https://img.shields.io/badge/Fastest%20(Heroku)-Pair%20Now-green?style=for-the-badge&logo=heroku" alt="Heroku Pairing"/>
 </a>
 
 </div>
