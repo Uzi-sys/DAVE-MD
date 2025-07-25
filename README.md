@@ -79,6 +79,8 @@ _Deploy the bot and easily connect it to your WhatsApp account by pair code. Bel
 </a>
 
 </div>
+---
+> after pairing use Apps like Z Archiver to see the session id or upload it like that to settings.js(copy pasting is the best after opening with Zarchiver)
 
 ---
 
@@ -91,8 +93,6 @@ _Download Bot Zip file From the button Bellow_
     </a>
 </p>
 
-
-### Step 3: Deploy Now
 ---
 
 ### Deploy Now on Below Panel
@@ -118,8 +118,9 @@ Click on any platform below to deploy the bot instantly
 
 ### 📦 Source
 This setup powers the **𝐃𝐀𝐕𝐄-𝐌𝐃** WhatsApp bot.  
-GitHub: [https://github.com/giftedsession/DAVE-MD](https://github.com/giftedsession/DAVE-MD)
+GitHub: [https://github.com/giftedsession/DAVE-MD]
 
+---
 
 ### Join Us
 
