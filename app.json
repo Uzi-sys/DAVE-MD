@@ -1,21 +1,26 @@
 {
   "name": "DAVE-MD",
-  "description": "WhatsApp Bot powered by Baileys",
-  "repository": "https://github.com/giftedsession/DAVE-XMD",
-  "logo": "https://files.catbox.moe/nxzaly.jpg",
-  "keywords": ["whatsapp", "bot", "baileys", "multi-device", "DAVE-MD"],
+  "description": "🚀 DAVE-MD WhatsApp Bot - AI-powered automation built on WhatsApp Multi-Device.",
+  "repository": "https://github.com/giftedsession/DAVE-MD",
+  "logo": "https://files.catbox.moe/bn3ast.jpg",
+  "keywords": ["whatsapp", "bot", "DAVE-MD", "baileys"],
   "env": {
+    "SESSION_ID": {
+      "description": "Paste your generated session ID here",
+      "required": true
+    },
     "OWNER_NUMBER": {
-      "description": "The WhatsApp number of the owner (in international format, no + sign)",
-      "value": "DAVE"
+      "description": "Owner's WhatsApp number (e.g., 2547xxxxxxx)",
+      "value": "254104260236",
+      "required": true
     },
     "BOT_NAME": {
-      "description": "The display name of your bot",
+      "description": "Your bot's display name",
       "value": "DAVE-MD"
     },
-    "SESSION_ID": {
-      "description": "Paste your Session ID here after pairing via /generate",
-      "required":
+    "COMMAND_MODE": {
+      "description": "Bot command mode: public or private",
+      "value": "public"
     }
   },
   "buildpacks": [
