@@ -1,4 +1,4 @@
-//Dave property dont touch unless...
+//Dave property dont touch unless...you know
 const settings = require('./settings');
 require('./config.js');
 const { isBanned } = require('./lib/isBanned');
