@@ -824,7 +824,7 @@ async function handleGroupParticipantUpdate(sock, update) {
             return;
         }
 
-        // Handle demotion events
+                // Handle demotion events
         if (action === 'demote') {
             await handleDemotionEvent(sock, id, participants, author);
             return;
@@ -845,7 +845,7 @@ async function handleGroupParticipantUpdate(sock, update) {
             const data = JSON.parse(fs.readFileSync('./data/userGroupData.json'));
             const welcomeData = data.welcome[id];
             const welcomeMessage = welcomeData?.message || 'Welcome {user} to the group! 🎉';
-            const channelId = welcomeData?.channelId || '120363400480173280@newsletter',
+            const channelId = welcomeData?.channelId || '120363161513685998@newsletter';
 
             // Send welcome message for each new participant
             for (const participant of participants) {
@@ -922,6 +922,3 @@ module.exports = {
         await handleStatusUpdate(sock, status);
     }
 };
-            
-            
- 
