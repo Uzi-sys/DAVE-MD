@@ -70,7 +70,7 @@ async function tiktokCommand(sock, chatId, message) {
                         await sock.sendMessage(chatId, {
                             video: { url: videoUrl },
                             mimetype: "video/mp4",
-                            caption: "𝐉ᴜɴᴇ 𝐌ᴅ"
+                            caption: "𝐃𝐀𝐕𝐄-𝐌𝐃 "
                         }, { quoted: message });
                         return;
                     }
@@ -101,7 +101,7 @@ async function tiktokCommand(sock, chatId, message) {
                 } else {
                     await sock.sendMessage(chatId, {
                         image: { url: mediaUrl },
-                        caption: "𝐉ᴜɴᴇ 𝐌ᴅ"
+                        caption: "𝐃𝐀𝐕𝐄-𝐌𝐃"
                     }, { quoted: message });
                 }
             }
