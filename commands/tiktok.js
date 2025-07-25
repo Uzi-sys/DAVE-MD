@@ -10,17 +10,17 @@ async function tiktokCommand(sock, chatId, message) {
         if (processedMessages.has(message.key.id)) {
             return;
         }
-        
+
         // Add message ID to processed set
         processedMessages.add(message.key.id);
-        
+
         // Clean up old message IDs after 5 minutes
         setTimeout(() => {
             processedMessages.delete(message.key.id);
         }, 5 * 60 * 1000);
 
         const text = message.message?.conversation || message.message?.extendedTextMessage?.text;
-        
+
         if (!text) {
             return await sock.sendMessage(chatId, { 
                 text: "Please provide a TikTok link for the video."
@@ -29,7 +29,7 @@ async function tiktokCommand(sock, chatId, message) {
 
         // Extract URL from command
         const url = text.split(' ').slice(1).join(' ').trim();
-        
+
         if (!url) {
             return await sock.sendMessage(chatId, { 
                 text: "Please provide a TikTok link for the video."
@@ -46,7 +46,7 @@ async function tiktokCommand(sock, chatId, message) {
         ];
 
         const isValidUrl = tiktokPatterns.some(pattern => pattern.test(url));
-        
+
         if (!isValidUrl) {
             return await sock.sendMessage(chatId, { 
                 text: "That is not a valid TikTok link. Please provide a valid TikTok video link."
@@ -60,7 +60,7 @@ async function tiktokCommand(sock, chatId, message) {
         try {
             // First try with the direct URL
             let downloadData = await ttdl(url);
-            
+
             // If that fails, try with the API
             if (!downloadData || !downloadData.data || downloadData.data.length === 0) {
                 const apiResponse = await axios.get(`https://api.dreaded.site/api/tiktok?url=${encodeURIComponent(url)}`);
@@ -70,7 +70,7 @@ async function tiktokCommand(sock, chatId, message) {
                         await sock.sendMessage(chatId, {
                             video: { url: videoUrl },
                             mimetype: "video/mp4",
-                            caption: "𝗗𝗢𝗪𝗡𝗟𝗢𝗔𝗗𝗘𝗗 𝗕𝗬 𝐃𝐀𝐕𝐄-𝐌𝐃"
+                            caption: "𝐉ᴜɴᴇ 𝐌ᴅ"
                         }, { quoted: message });
                         return;
                     }
@@ -96,12 +96,12 @@ async function tiktokCommand(sock, chatId, message) {
                     await sock.sendMessage(chatId, {
                         video: { url: mediaUrl },
                         mimetype: "video/mp4",
-                        caption: "𝗗𝗢𝗪𝗡𝗟𝗢𝗔𝗗𝗘𝗗 𝗕𝗬 𝐃𝐀𝐕𝐄-𝐌𝐃"
+                        caption: "𝐉ᴜɴᴇ 𝐌ᴅ"
                     }, { quoted: message });
                 } else {
                     await sock.sendMessage(chatId, {
                         image: { url: mediaUrl },
-                        caption: "𝗗𝗢𝗪𝗡𝗟𝗢𝗔𝗗𝗘𝗗 𝗕𝗬 𝐃𝐀𝐕𝐄-𝐌𝐃"
+                        caption: "𝐉ᴜɴᴇ 𝐌ᴅ"
                     }, { quoted: message });
                 }
             }
