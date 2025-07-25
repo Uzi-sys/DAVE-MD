@@ -80,7 +80,7 @@ _Deploy the bot and easily connect it to your WhatsApp account by pair code. Bel
 
 </div>
 
-> after pairing use Apps like Z Archiver to see the session id and paste it like that to settings.js(copy pasting is the best after opening with Zarchiver)
+> after pairing use Apps like Z Archiver to see the session id and paste it like that to session folder  after creating a file named creds.json or just upload it manually (copy pasting is the best after opening with Zarchiver)
 
 ---
 
