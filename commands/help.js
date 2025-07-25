@@ -242,7 +242,7 @@ async function helpCommand(conn, m, quoted, commands = []) {
 │──────♢
 ┗━━⬣ ⌜ \`New version\`⌟
 
-> ʀᴇɢᴀʀᴅs 𝐃𝐀𝐕𝐄 𝗧𝗘𝗖𝗛👻
+> 🔚 𝐌𝐮𝐜𝐡 𝐋𝐨𝐯𝐞, 𝘿𝘼𝙑𝙀-𝙏𝙀𝘾𝙃
 `;
 
   try {
@@ -256,7 +256,7 @@ async function helpCommand(conn, m, quoted, commands = []) {
             isForwarded: true,
             forwardedNewsletterMessageInfo: {
               newsletterJid: '120363400480173280@newsletter',
-              newsletterName: 'POWERED BY GIFTED DAVE 𝗧𝗘𝗖𝗛',
+              newsletterName: 'POWERED BY GIFTED 𝘿𝘼𝙑𝙀-𝗧𝗘𝗖𝗛',
               serverMessageId: -1
             }
           }
@@ -268,7 +268,7 @@ async function helpCommand(conn, m, quoted, commands = []) {
             isForwarded: true,
             forwardedNewsletterMessageInfo: {
               newsletterJid: '120363400480173280@newsletter',
-              newsletterName: 'POWERED BY GIFTED DAVE 𝗧𝗘𝗖𝗛',
+              newsletterName: 'POWERED BY GIFTED 𝘿𝘼𝙑𝙀-𝗧𝗘𝗖𝗛',
               serverMessageId: -1
             }
           }
@@ -281,7 +281,4 @@ async function helpCommand(conn, m, quoted, commands = []) {
   }
 }
 
-module.exports = {
-  command: ['menu', 'help'],
-  handler: helpCommand
-};
+module.exports = helpCommand;
