@@ -1,7 +1,3 @@
-/*Créditos A Quien Correspondan 
-Play Traido y Editado 
-Por Cuervo-Team-Dave*/
-
 const axios = require('axios');
 const crypto = require('crypto');
 const yts = require('yt-search');
@@ -104,7 +100,8 @@ const savetube = {
             code: 400,
             error: "Invalid format. Please choose one of the available formats: 144, 240, 360, 480, 720, 1080, mp3.",
             available_fmt: savetube.formats
-         }
+      }
+         
       }
       const id = savetube.youtube(link);
       if (!id) throw new Error('Invalid YouTube link.');
@@ -131,7 +128,8 @@ const savetube = {
             status: true,
             code: 200,
             result: {
-               title: decrypted.title || "Unknown Title",
+               title: decrypted.title || "Unknown 
+                  Title",
                type: format === 'mp3' ? 'audio' : 'video',
                format: format,
                thumbnail: decrypted.thumbnail || `https://i.ytimg.com/vi/${id}/0.jpg`,
@@ -155,9 +153,8 @@ async function songCommand(sock, chatId, message) {
         const searchQuery = text.split(' ').slice(1).join(' ').trim();
         if (!searchQuery) {
             return await sock.sendMessage(chatId, { text: "What song do you want to download?" });
-        }
-
-        // Determine if input is a YouTube link or search query
+   }
+          // Determine if input is a YouTube link or search query
         let videoUrl = '';
         if (searchQuery.startsWith('http://') || searchQuery.startsWith('https://')) {
             videoUrl = searchQuery;
@@ -173,7 +170,7 @@ async function songCommand(sock, chatId, message) {
         // Download using savetube
         let result;
         try {
-            result = await savetube.download(videoUrl, 'mp3');
+           result = await savetube.download(videoUrl, 'mp3');
         } catch (err) {
             return await sock.sendMessage(chatId, { text: "Failed to fetch download link. Try again later." });
         }
@@ -185,7 +182,7 @@ async function songCommand(sock, chatId, message) {
         let sentMsg;
         try {
             sentMsg = await sock.sendMessage(chatId, {
-                //image: { url: result.result.thumbnail },
+               //image: { url: result.result.thumbnail },
                 caption: `*${result.result.title}*\n\n _Downloading song Request ..._\n  *_By 𝐃𝐀𝐕𝐄-𝐌𝐃_*`
             }, { quoted: message });
         } catch (e) {
@@ -200,7 +197,7 @@ async function songCommand(sock, chatId, message) {
         const response = await axios({ url: result.result.download, method: 'GET', responseType: 'stream' });
         if (response.status !== 200) {
             return await sock.sendMessage(chatId, { text: "Failed to download the song file from the server." });
-        }
+    }
         const writer = fs.createWriteStream(tempFile);
         response.data.pipe(writer);
         await new Promise((resolve, reject) => {
