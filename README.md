@@ -95,6 +95,13 @@ _Download Bot Zip file From the button Bellow_
 
 ---
 
+
+### 📽️ Deployment Tutorial
+[![YouTube Tutorial](https://img.shields.io/badge/Deploy%20Tutorial-YouTube-red?logo=youtube&style=for-the-badge)](https://youtube.com/shorts/JL5oPHoOa-A?si=8E9bZWU5rotFEdmj)
+
+---
+
+
 ### Deploy Now on Below Panel
 <div align="center">
 <a href="https://dashboard.katabump.com/auth/login#ce51a9" target="_blank">
