@@ -10,22 +10,22 @@ async function lyricsCommand(sock, chatId, songTitle) {
 
     try {
         // Fetch song lyrics using the some-random-api.com API
-        const apiUrl = `https://some-random-api.com/lyrics?title=${encodeURIComponent(songTitle)}`;
+        const apiUrl = `https://api.lyrics.ovh/v1/=${encodeURIComponent(songTitle)}`;
         const res = await fetch(apiUrl);
-        
+
         if (!res.ok) {
             throw await res.text();
         }
-        
+
         const json = await res.json();
-        
+
         if (!json.lyrics) {
             await sock.sendMessage(chatId, { 
                 text: `❌ Sorry, I couldn't find any lyrics for "${songTitle}".`
             });
             return;
         }
-        
+
         // Sending the formatted result to the user
         await sock.sendMessage(chatId, {
             text: `🎵 *Song Lyrics* 🎶\n\n▢ *Title:* ${json.title || songTitle}\n▢ *Artist:* ${json.author || 'Unknown'}\n\n📜 *Lyrics:*\n${json.lyrics}\n\nHope you enjoy the music! 🎧 🎶`
