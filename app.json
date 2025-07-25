@@ -15,7 +15,7 @@
     },
     "SESSION_ID": {
       "description": "Paste your Session ID here after pairing via /generate",
-      "required": true
+      "required":
     }
   },
   "buildpacks": [
