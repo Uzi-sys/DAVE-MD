@@ -1,4 +1,3 @@
-
 require('./settings')
 const { Boom } = require('@hapi/boom')
 const fs = require('fs')
@@ -52,7 +51,7 @@ const store = {
                 }
             })
         })
-
+        
         ev.on('contacts.update', (contacts) => {
             contacts.forEach(contact => {
                 if (contact.id) {
@@ -60,7 +59,7 @@ const store = {
                 }
             })
         })
-
+        
         ev.on('chats.set', (chats) => {
             this.chats = chats
         })
@@ -70,10 +69,10 @@ const store = {
     }
 }
 
-let phoneNumber = "254792021944"
+let phoneNumber = "254104260236"
 let owner = JSON.parse(fs.readFileSync('./data/owner.json'))
 
-global.botname = "𝐉ᴜɴᴇ 𝐌ᴅ"
+global.botname = "DAVE-MD BOT"
 global.themeemoji = "•"
 
 const settings = require('./settings')
@@ -91,7 +90,7 @@ const question = (text) => {
     }
 }
 
-
+         
 async function startXeonBotInc() {
     let { version, isLatest } = await fetchLatestBaileysVersion()
     const { state, saveCreds } = await useMultiFileAuthState(`./session`)
@@ -131,7 +130,7 @@ async function startXeonBotInc() {
             }
             if (!XeonBotInc.public && !mek.key.fromMe && chatUpdate.type === 'notify') return
             if (mek.key.id.startsWith('BAE5') && mek.key.id.length === 16) return
-
+            
             try {
                 await handleMessages(XeonBotInc, chatUpdate, true)
             } catch (err) {
@@ -144,8 +143,8 @@ async function startXeonBotInc() {
                             forwardingScore: 1,
                             isForwarded: true,
                             forwardedNewsletterMessageInfo: {
-                                newsletterJid: '@newsletter',
-                                newsletterName: '𝐉ᴜɴᴇ 𝐌ᴅ',
+                                newsletterJid: '120363400480173280@newsletter',
+                                newsletterName: 'DAVE-MD',
                                 serverMessageId: -1
                             }
                         }
@@ -203,7 +202,7 @@ async function startXeonBotInc() {
         if (!!global.phoneNumber) {
             phoneNumber = global.phoneNumber
         } else {
-            phoneNumber = await question(chalk.bgBlack(chalk.greenBright(`Please type your WhatsApp number 😍\nFormat: 2547XXXXX (without + or spaces) : `)))
+            phoneNumber = await question(chalk.bgBlack(chalk.greenBright(`Please type your WhatsApp number 😍\nFormat: 254104260236 (without + or spaces) : `)))
         }
 
         // Clean the phone number - remove any non-digit characters
@@ -212,7 +211,7 @@ async function startXeonBotInc() {
         // Validate the phone number using awesome-phonenumber
         const pn = require('awesome-phonenumber');
         if (!pn('+' + phoneNumber).isValid()) {
-            console.log(chalk.red('Invalid phone number. Please enter your full international number (e.g., 255792021944 for Tanzania, 254798570132 for Kenya, etc.) without + or spaces.'));
+            console.log(chalk.red('Invalid phone number. Please enter your full international number (e.g., 15551234567 for US, 447911123456 for UK, etc.) without + or spaces.'));
             process.exit(1);
         }
 
@@ -229,7 +228,7 @@ async function startXeonBotInc() {
         }, 3000)
     }
 
-        // Connection handling
+    // Connection handling
     XeonBotInc.ev.on('connection.update', async (s) => {
         const { connection, lastDisconnect } = s
         if (connection == "open") {
@@ -251,7 +250,6 @@ async function startXeonBotInc() {
                 }
             });
 
-
             await delay(1999)
             console.log(chalk.yellow(`\n\n                  ${chalk.bold.blue(`[ ${global.botname || 'DAVE-MD'} ]`)}\n\n`))
             console.log(chalk.cyan(`< ================================================== >`))
@@ -262,7 +260,6 @@ async function startXeonBotInc() {
             console.log(chalk.green(`${global.themeemoji || '•'} 🤖 Bot Connected Successfully! ✅`))
         }
         if (
-          
             connection === "close" &&
             lastDisconnect &&
             lastDisconnect.error &&
@@ -273,7 +270,7 @@ async function startXeonBotInc() {
     })
 
     XeonBotInc.ev.on('creds.update', saveCreds)
-
+    
     XeonBotInc.ev.on('group-participants.update', async (update) => {
         await handleGroupParticipantUpdate(XeonBotInc, update);
     });
