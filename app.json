@@ -7,7 +7,7 @@
   "env": {
     "SESSION_ID": {
       "description": "Paste your generated session ID here",
-      "required": 
+      "required": true
     },
     "OWNER_NUMBER": {
       "description": "Owner's WhatsApp number (e.g., 2547xxxxxxx)",
