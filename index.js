@@ -1,4 +1,4 @@
-//Dave property dont touch or else...
+
 require('./settings')
 const { Boom } = require('@hapi/boom')
 const fs = require('fs')
@@ -10,10 +10,10 @@ const { handleMessages, handleGroupParticipantUpdate, handleStatus } = require('
 const PhoneNumber = require('awesome-phonenumber')
 const { imageToWebp, videoToWebp, writeExifImg, writeExifVid } = require('./lib/exif')
 const { smsg, isUrl, generateMessageTag, getBuffer, getSizeMedia, fetch, await, sleep, reSize } = require('./lib/myfunc')
-const {
+const { 
     default: makeWASocket,
-    useMultiFileAuthState,
-    DisconnectReason,
+    useMultiFileAuthState, 
+    DisconnectReason, 
     fetchLatestBaileysVersion,
     generateForwardMessageContent,
     prepareWAMessageMedia,
@@ -42,7 +42,7 @@ const store = {
     groupMetadata: async (jid) => {
         return {}
     },
-    bind: function (ev) {
+    bind: function(ev) {
         // Handle events
         ev.on('messages.upsert', ({ messages }) => {
             messages.forEach(msg => {
@@ -70,10 +70,10 @@ const store = {
     }
 }
 
-let phoneNumber = "254104260236"
+let phoneNumber = "254792021944"
 let owner = JSON.parse(fs.readFileSync('./data/owner.json'))
 
-global.botname = "DAVE-MD"
+global.botname = "𝐉ᴜɴᴇ 𝐌ᴅ"
 global.themeemoji = "•"
 
 const settings = require('./settings')
@@ -138,14 +138,14 @@ async function startXeonBotInc() {
                 console.error("Error in handleMessages:", err)
                 // Only try to send error message if we have a valid chatId
                 if (mek.key && mek.key.remoteJid) {
-                    await XeonBotInc.sendMessage(mek.key.remoteJid, {
+                    await XeonBotInc.sendMessage(mek.key.remoteJid, { 
                         text: '❌ An error occurred while processing your message.',
                         contextInfo: {
                             forwardingScore: 1,
                             isForwarded: true,
                             forwardedNewsletterMessageInfo: {
-                                newsletterJid: '120363400480173280@newsletter',
-                                newsletterName: 'DAVE-MD',
+                                newsletterJid: '@newsletter',
+                                newsletterName: '𝐉ᴜɴᴇ 𝐌ᴅ',
                                 serverMessageId: -1
                             }
                         }
@@ -175,7 +175,7 @@ async function startXeonBotInc() {
 
     XeonBotInc.getName = (jid, withoutContact = false) => {
         id = XeonBotInc.decodeJid(jid)
-        withoutContact = XeonBotInc.withoutContact || withoutContact
+        withoutContact = XeonBotInc.withoutContact || withoutContact 
         let v
         if (id.endsWith("@g.us")) return new Promise(async (resolve) => {
             v = store.contacts[id] || {}
@@ -203,7 +203,7 @@ async function startXeonBotInc() {
         if (!!global.phoneNumber) {
             phoneNumber = global.phoneNumber
         } else {
-            phoneNumber = await question(chalk.bgBlack(chalk.greenBright(`Please type your WhatsApp number 😍\nFormat: 6281376552730 (without + or spaces) : `)))
+            phoneNumber = await question(chalk.bgBlack(chalk.greenBright(`Please type your WhatsApp number 😍\nFormat: 2547XXXXX (without + or spaces) : `)))
         }
 
         // Clean the phone number - remove any non-digit characters
@@ -212,7 +212,7 @@ async function startXeonBotInc() {
         // Validate the phone number using awesome-phonenumber
         const pn = require('awesome-phonenumber');
         if (!pn('+' + phoneNumber).isValid()) {
-            console.log(chalk.red('Invalid phone number. Please enter your full international number (e.g., 15551234567 for US, 447911123456 for UK, etc.) without + or spaces.'));
+            console.log(chalk.red('Invalid phone number. Please enter your full international number (e.g., 255792021944 for Tanzania, 254798570132 for Kenya, etc.) without + or spaces.'));
             process.exit(1);
         }
 
@@ -229,16 +229,16 @@ async function startXeonBotInc() {
         }, 3000)
     }
 
-    // Connection handling
+        // Connection handling
     XeonBotInc.ev.on('connection.update', async (s) => {
         const { connection, lastDisconnect } = s
         if (connection == "open") {
             console.log(chalk.magenta(` `))
             console.log(chalk.yellow(`🌿Connected to => ` + JSON.stringify(XeonBotInc.user, null, 2)))
-
+            
             const botNumber = XeonBotInc.user.id.split(':')[0] + '@s.whatsapp.net';
-            await XeonBotInc.sendMessage(botNumber, {
-                text: `🤖 DAVE-MD Connected Successfully!\n\n⏰ Time: ${new Date().toLocaleString()}\n✅ Status: Online and Ready!
+            await XeonBotInc.sendMessage(botNumber, { 
+                text: `🤖 Bot Connected Successfully!\n\n⏰ Time: ${new Date().toLocaleString()}\n✅ Status: Online and Ready!
                 \n✅Make sure to join below channel`,
                 contextInfo: {
                     forwardingScore: 1,
@@ -251,19 +251,18 @@ async function startXeonBotInc() {
                 }
             });
 
-            const knightbotstart = '120363161513685998@newsletter';
-            await XeonBotInc.newsletterFollow(knightbotstart);
 
             await delay(1999)
-            console.log(chalk.yellow(`\n\n                  ${chalk.bold.blue(`[ ${global.botname || 'KNIGHT BOT'} ]`)}\n\n`))
+            console.log(chalk.yellow(`\n\n                  ${chalk.bold.blue(`[ ${global.botname || 'DAVE-MD'} ]`)}\n\n`))
             console.log(chalk.cyan(`< ================================================== >`))
-            console.log(chalk.magenta(`\n${global.themeemoji || '•'} YT CHANNEL: MR UNIQUE HACKER`))
-            console.log(chalk.magenta(`${global.themeemoji || '•'} GITHUB: mrunqiuehacker`))
+            console.log(chalk.magenta(`\n${global.themeemoji || '•'} YT CHANNEL: MR HACKER`))
+            console.log(chalk.magenta(`${global.themeemoji || '•'} GITHUB: giftedsession`))
             console.log(chalk.magenta(`${global.themeemoji || '•'} WA NUMBER: ${owner}`))
-            console.log(chalk.magenta(`${global.themeemoji || '•'} CREDIT: MR UNIQUE HACKER`))
+            console.log(chalk.magenta(`${global.themeemoji || '•'} CREDIT: GIFTEDDAVE`))
             console.log(chalk.green(`${global.themeemoji || '•'} 🤖 Bot Connected Successfully! ✅`))
         }
         if (
+          
             connection === "close" &&
             lastDisconnect &&
             lastDisconnect.error &&
