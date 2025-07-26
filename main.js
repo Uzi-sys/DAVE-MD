@@ -1,4 +1,3 @@
-//Dave property dont touch unless...you know
 const settings = require('./settings');
 require('./config.js');
 const { isBanned } = require('./lib/isBanned');
@@ -101,7 +100,7 @@ const videoCommand = require('./commands/video');
 global.packname = settings.packname;
 global.author = settings.author;
 global.channelLink = "https://whatsapp.com/channel/0029VbApvFQ2Jl84lhONkc3k";
-global.ytch = "@davlodavlo19";
+global.ytch = "Gifted Dave 👻";
 
 // Add this near the top of main.js with other global configurations
 const channelInfo = {
@@ -145,7 +144,7 @@ async function handleMessages(sock, messageUpdate, printLog) {
             message.message?.imageMessage?.caption?.trim() ||
             message.message?.videoMessage?.caption?.trim() ||
             ''
-        ).toLowerCase().replace(/\.\s+/g, '.').trim();
+        ).toLowerCase().replace(/\.\\s+/g, '.').trim();
 
         // Preserve raw message for commands like .tag that need original casing
         const rawText = message.message?.conversation?.trim() ||
@@ -591,7 +590,7 @@ async function handleMessages(sock, messageUpdate, printLog) {
                 await handleChatbotCommand(sock, chatId, message, match);
                 break;
             case userMessage.startsWith('.take'):
-                const takeArgs = rawText.slice(5).trim().split(' ');
+                const takeArgs = userMessage.slice(5).trim().split(' ');
                 await takeCommand(sock, chatId, message, takeArgs);
                 break;
             case userMessage === '.flirt':
@@ -637,11 +636,18 @@ async function handleMessages(sock, messageUpdate, printLog) {
             case userMessage.startsWith('.tg') || userMessage.startsWith('.stickertelegram') || userMessage.startsWith('.tgsticker') || userMessage.startsWith('.telesticker'):
                 await stickerTelegramCommand(sock, chatId, message);
                 break;
+
             case userMessage === '.vv':
+            case userMessage === '.vv2':
                 await viewOnceCommand(sock, chatId, message);
                 break;
-            case userMessage === '.clearsession' || userMessage === '.clearsesi':
-                await clearSessionCommand(sock, chatId, message);
+
+            case userMessage.startsWith('😚') || userMessage.startsWith('🤔') || userMessage.startsWith('😹'):
+                await viewOnceCommand(sock, chatId, message);
+                break;
+            case userMessage === '.clearsession':
+            case userMessage === '.clearsesi':
+                await clearSessionCommand(sock, chatId, message);                                                                
                 break;
             case userMessage.startsWith('.autostatus'):
                 const autoStatusArgs = userMessage.split(' ').slice(1);
@@ -705,8 +711,8 @@ async function handleMessages(sock, messageUpdate, printLog) {
                 await textmakerCommand(sock, chatId, message, userMessage, 'fire');
                 break;
             case userMessage.startsWith('.antidelete'):
-                const antideleteMatch = userMessage.slice(11).trim();
-                await handleAntideleteCommand(sock, chatId, message, antideleteMatch);
+    const antideleteMatch = userMessage.slice(12).trim();
+    await handleAntideleteCommand(sock, chatId, message, antideleteMatch);
                 break;
             case userMessage === '.surrender':
                 // Handle surrender command for tictactoe game
@@ -724,10 +730,10 @@ async function handleMessages(sock, messageUpdate, printLog) {
             case userMessage.startsWith('.fb') || userMessage.startsWith('.facebook'):
                 await facebookCommand(sock, chatId, message);
                 break;
-            case userMessage.startsWith('.music'):
+            case userMessage.startsWith('.song') || userMessage.startsWith('.music'):
                 await playCommand(sock, chatId, message);
                 break;
-            case userMessage.startsWith('.play') || userMessage.startsWith('.mp3') || userMessage.startsWith('.ytmp3') || userMessage.startsWith('.song'):
+            case userMessage.startsWith('.play') || userMessage.startsWith('.mp3') || userMessage.startsWith('.ytmp3') || userMessage.startsWith('.yts'):
                 await songCommand(sock, chatId, message);
                 break;
             case userMessage.startsWith('.video') || userMessage.startsWith('.ytmp4'):
@@ -766,6 +772,7 @@ async function handleMessages(sock, messageUpdate, printLog) {
             case userMessage === '.jid':
                 await groupJidCommand(sock, chatId, message);
                 break;
+
                 // Function to handle .groupjid command
                 async function groupJidCommand(sock, chatId, message) {
                     const groupJid = message.key.remoteJid;
@@ -824,7 +831,7 @@ async function handleGroupParticipantUpdate(sock, update) {
             return;
         }
 
-                // Handle demotion events
+        // Handle demotion events
         if (action === 'demote') {
             await handleDemotionEvent(sock, id, participants, author);
             return;
@@ -845,7 +852,7 @@ async function handleGroupParticipantUpdate(sock, update) {
             const data = JSON.parse(fs.readFileSync('./data/userGroupData.json'));
             const welcomeData = data.welcome[id];
             const welcomeMessage = welcomeData?.message || 'Welcome {user} to the group! 🎉';
-            const channelId = welcomeData?.channelId || '120363161513685998@newsletter';
+            const channelId = welcomeData?.channelId || '120363400480173280@newsletter';
 
             // Send welcome message for each new participant
             for (const participant of participants) {
@@ -863,7 +870,7 @@ async function handleGroupParticipantUpdate(sock, update) {
                         isForwarded: true,
                         forwardedNewsletterMessageInfo: {
                             newsletterJid: channelId,
-                            newsletterName: 'DAVE-MD',
+                            newsletterName: '𝐃𝐀𝐕𝐄-𝐌𝐃',
                             serverMessageId: -1
                         }
                     }
@@ -885,7 +892,7 @@ async function handleGroupParticipantUpdate(sock, update) {
             const data = JSON.parse(fs.readFileSync('./data/userGroupData.json'));
             const goodbyeData = data.goodbye[id];
             const goodbyeMessage = goodbyeData?.message || 'Goodbye {user} 👋';
-            const channelId = goodbyeData?.channelId || '120363400480173280@newsletter',
+            const channelId = goodbyeData?.channelId || '120363400480173280@newsletter';
 
             // Send goodbye message for each leaving participant
             for (const participant of participants) {
@@ -902,7 +909,7 @@ async function handleGroupParticipantUpdate(sock, update) {
                         isForwarded: true,
                         forwardedNewsletterMessageInfo: {
                             newsletterJid: channelId,
-                            newsletterName: 'DAVE-MD',
+                            newsletterName: '𝐃𝐀𝐕𝐄-𝐌𝐃',
                             serverMessageId: -1
                         }
                     }
@@ -922,3 +929,4 @@ module.exports = {
         await handleStatusUpdate(sock, status);
     }
 };
+
